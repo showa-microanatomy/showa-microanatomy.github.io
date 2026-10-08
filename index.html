@@ -1,20 +1,2654 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Division of Microanatomy | Showa Medical University</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>川西研究室 | Kawanishi Lab — 昭和医科大学 医学部 解剖学講座 顕微解剖学部門</title>
+<meta name="description" content="昭和医科大学 医学部 解剖学講座 顕微解剖学部門（川西研究室）。空間組織生物学を軸に、形態学・空間オミクス・分子細胞生物学を組み合わせ、腫瘍・腎疾患・炎症性疾患の組織微小環境を研究しています。">
+<link rel="canonical" href="https://showa-microanatomy.jp/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kawanishi Lab">
+<meta property="og:title" content="川西研究室 | Kawanishi Lab">
+<meta property="og:description" content="昭和医科大学 医学部 解剖学講座 顕微解剖学部門。組織の空間から、病態を読み解く。">
+<meta property="og:url" content="https://showa-microanatomy.jp/">
+<meta property="og:image" content="https://showa-microanatomy.jp/images/events/2025-04-welcome-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1D33">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B1D33'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' font-weight='700' fill='%23F8FAFC' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<style>[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+
+<style>
+/* ═══════════════════════════════════════
+   Kawanishi Lab — Home
+   Style: clean academic, white-primary,
+          fluorescence blue accent
+   ═══════════════════════════════════════ */
+
+/* ── Tokens: light (default) ── */
+:root {
+  --accent:     #1b5fa8;
+  --accent-h:   #1a4f8c;
+  --accent-lt:  #e8f0fb;
+  --glow:       #9b2060;   /* magenta accent, used sparingly */
+  --bg:         #ffffff;
+  --bg-soft:    #f4f7fb;
+  --bg-alt:     #edf1f8;
+  --surface:    #ffffff;
+  --border:     #d0daea;
+  --border-lt:  #e8eef6;
+  --fg:         #0d1b2e;
+  --fg-mid:     #334e6e;
+  --fg-dim:     #6b839e;
+  --nav-bg:     #0d1b2e;
+  --nav-fg:     #e8f0fb;
+  --hero-bg1:   #0d1b2e;
+  --hero-bg2:   #152840;
+  --tag-pub:    #1b5fa8;
+  --tag-app:    #7a5a10;
+  --tag-lab:    #256838;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --accent:     #5aaee0;
+    --accent-h:   #72c4f0;
+    --accent-lt:  #0f2644;
+    --glow:       #cc5c9a;
+    --bg:         #0a111e;
+    --bg-soft:    #0f1828;
+    --bg-alt:     #131f34;
+    --surface:    #111928;
+    --border:     #1e3050;
+    --border-lt:  #182540;
+    --fg:         #dde8f5;
+    --fg-mid:     #8aaccb;
+    --fg-dim:     #506478;
+    --nav-bg:     #060c18;
+    --nav-fg:     #dde8f5;
+    --hero-bg1:   #050c18;
+    --hero-bg2:   #091520;
+    --tag-pub:    #5aaee0;
+    --tag-app:    #d4a030;
+    --tag-lab:    #4cc870;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --accent:     #5aaee0;
+  --accent-h:   #72c4f0;
+  --accent-lt:  #0f2644;
+  --glow:       #cc5c9a;
+  --bg:         #0a111e;
+  --bg-soft:    #0f1828;
+  --bg-alt:     #131f34;
+  --surface:    #111928;
+  --border:     #1e3050;
+  --border-lt:  #182540;
+  --fg:         #dde8f5;
+  --fg-mid:     #8aaccb;
+  --fg-dim:     #506478;
+  --nav-bg:     #060c18;
+  --nav-fg:     #dde8f5;
+  --hero-bg1:   #050c18;
+  --hero-bg2:   #091520;
+  --tag-pub:    #5aaee0;
+  --tag-app:    #d4a030;
+  --tag-lab:    #4cc870;
+  color-scheme: dark;
+}
+
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth }
+body {
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 15px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+body.lang-ja .en { display: none !important }
+body.lang-en .ja { display: none !important }
+img { max-width: 100%; display: block }
+a { color: var(--accent); text-decoration: none }
+a:hover { text-decoration: underline }
+
+/* ── Typography ── */
+h1, h2, h3, h4 { font-family: 'Libre Baskerville', Georgia, serif; line-height: 1.25; text-wrap: balance }
+.ja h1, .ja h2, .ja h3, body.lang-ja h1, body.lang-ja h2, body.lang-ja h3 {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* ── Layout wrapper ── */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.container--wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ════════════════════════════════════════
+   NAV
+   ════════════════════════════════════════ */
+.nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  background: var(--nav-bg);
+  color: var(--nav-fg);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 54px;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 16px;
+}
+.nav__brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.nav__brand-en {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .01em;
+}
+.nav__brand-ja {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(220,235,255,.65);
+  letter-spacing: .06em;
+}
+.nav__links {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  list-style: none;
+}
+.nav__links a {
+  color: #B9C6D5;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background .15s, color .15s;
+}
+.nav__links a:hover {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  text-decoration: none;
+}
+.lang-btn {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  color: rgba(220,235,255,.85);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  letter-spacing: .06em;
+  transition: background .15s, color .15s;
+  white-space: nowrap;
+}
+.lang-btn:hover { background: rgba(255,255,255,.18); color: #fff }
+
+/* ════════════════════════════════════════
+   HERO — compact, institutional
+   ════════════════════════════════════════ */
+.hero {
+  /* deep navy, very slightly lighter toward the bottom to soften the edge into the white page */
+  background: linear-gradient(180deg, #0B1D33 0%, #0E2139 70%, #12283F 100%);
+  color: #fff;
+  padding: 72px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+/* Subtle fluorescence gradient atmosphere */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 55% at 80% 30%, rgba(73,52,95,.75) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 50% at 18% 75%, rgba(23,63,114,.70) 0%, transparent 68%),
+    radial-gradient(ellipse 40% 32% at 60% 88%, rgba(22,75,85,.55) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.hero__kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #AFC1D4;
+  margin-bottom: 18px;
+}
+.hero__title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #F8FAFC;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+.hero__subtitle-ja {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #AFC1D4;
+  margin-bottom: 22px;
+  letter-spacing: .1em;
+}
+.hero__dept {
+  font-size: 13px;
+  color: #9FB4CC;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+.hero__tagline {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #E2E8F0;
+  max-width: 560px;
+  margin: 0 auto 36px;
+}
+.hero__tagline .ja {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+}
+.hero__cta {
+  display: inline-flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 26px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity .15s, box-shadow .15s;
+  white-space: nowrap;
+}
+.btn:hover { opacity: .88; text-decoration: none }
+.btn--primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+}
+.btn--outline {
+  background: transparent;
+  color: rgba(220,240,255,.85);
+  border: 1px solid rgba(220,240,255,.35);
+}
+.btn--outline:hover { background: rgba(255,255,255,.08) }
+.hero .btn--primary, .page-hero .btn--primary { background: #2878C8 }
+.hero .btn--outline { color: #D7E3F1; border-color: #6F879F }
+
+/* ════════════════════════════════════════
+   SECTION shared
+   ════════════════════════════════════════ */
+.section {
+  padding: 64px 0;
+}
+.section--alt {
+  background: var(--bg-soft);
+}
+.section--dark {
+  background: var(--hero-bg2);
+  color: rgba(220,240,255,.9);
+}
+.section__header {
+  margin-bottom: 36px;
+}
+.section__eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.section--dark .section__eyebrow { color: rgba(140,200,255,.8) }
+.section__title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 10px;
+}
+.section--dark .section__title { color: #fff }
+.section__title-ja {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 10px;
+}
+.section--dark .section__title-ja { color: #fff }
+.section__lead {
+  font-size: 15px;
+  color: var(--fg-mid);
+  max-width: 640px;
+  line-height: 1.8;
+}
+.section--dark .section__lead { color: rgba(180,215,255,.75) }
+.section__lead .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+
+/* ════════════════════════════════════════
+   CONCEPT BANNER
+   ════════════════════════════════════════ */
+.concept {
+  border-left: 4px solid var(--accent);
+  padding: 20px 24px;
+  background: var(--accent-lt);
+  border-radius: 0 6px 6px 0;
+  margin-top: 8px;
+}
+.concept p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--fg-mid);
+}
+/* Japanese line breaking: keep words/phrases intact */
+.nw { white-space: nowrap }
+body.lang-ja { word-break: auto-phrase }
+.concept p { text-wrap: pretty }
+.concept p .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+
+/* ════════════════════════════════════════
+   RESEARCH AREAS
+   ════════════════════════════════════════ */
+.area-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.area-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow .18s;
+}
+.area-card:hover {
+  box-shadow: 0 4px 20px rgba(27,95,168,.1);
+}
+.area-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.area-icon--1 { background: #e8f0fb }
+.area-icon--2 { background: #fdf0d4 }
+.area-icon--3 { background: #e2f4e6 }
+.area-num {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.area-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.4;
+}
+.area-title-ja {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.4;
+}
+.area-body {
+  font-size: 13.5px;
+  color: var(--fg-mid);
+  line-height: 1.75;
+  flex: 1;
+}
+.area-body .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+.area-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px }
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.tag--blue { background: #dce9f8; color: var(--tag-pub) }
+.tag--amber { background: #fdf0d4; color: var(--tag-app) }
+.tag--green { background: #e2f4e6; color: var(--tag-lab) }
+.tag--magenta { background: #f5e0ef; color: #8a1858 }
+
+/* ════════════════════════════════════════
+   PUBLICATIONS
+   ════════════════════════════════════════ */
+.pub-list { display: flex; flex-direction: column; gap: 16px }
+.pub-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 22px 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.pub-year {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+  padding-top: 2px;
+  min-width: 38px;
+}
+.pub-body { flex: 1; min-width: 0 }
+.pub-journal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+.pub-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--accent);
+  color: #fff;
+}
+.pub-journal-name {
+  font-size: 12px;
+  color: var(--fg-dim);
+  font-style: italic;
+}
+.pub-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.pub-title a { color: var(--fg) }
+.pub-title a:hover { color: var(--accent) }
+.pub-authors {
+  font-size: 12.5px;
+  color: var(--fg-dim);
+  line-height: 1.55;
+}
+.pub-authors strong { color: var(--fg-mid); font-weight: 600 }
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--accent);
+  margin-top: 8px;
+}
+.pub-link svg { flex-shrink: 0 }
+.pub-note {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--fg-dim);
+}
+.pub-note a { color: var(--accent) }
+
+/* ════════════════════════════════════════
+   TECHNOLOGY
+   ════════════════════════════════════════ */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.tech-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.tech-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+.tech-dot--blue { background: var(--accent) }
+.tech-dot--magenta { background: var(--glow) }
+.tech-dot--green { background: #28a050 }
+.tech-dot--amber { background: #c08020 }
+.tech-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+.tech-name .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 500 }
+.tech-desc {
+  font-size: 12px;
+  color: var(--fg-dim);
+  line-height: 1.55;
+}
+.tech-desc .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+
+/* ════════════════════════════════════════
+   NEWS
+   ════════════════════════════════════════ */
+.news-list { display: flex; flex-direction: column }
+.news-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-lt);
+  align-items: start;
+}
+.news-item:first-child { border-top: 1px solid var(--border-lt) }
+.news-date {
+  font-size: 12.5px;
+  color: var(--fg-dim);
+  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+.news-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-bottom: 4px;
+}
+.news-badge--pub { background: #dce9f8; color: var(--tag-pub) }
+.news-badge--org { background: #e2f4e6; color: var(--tag-lab) }
+.news-badge--award { background: #fdf0d4; color: var(--tag-app) }
+.news-badge--media { background: #ede8f8; color: #5a2a9a }
+.news-badge--recruit { background: #fde4e4; color: #9b2c2c }
+.news-title { font-weight: 600; color: var(--fg); margin-bottom: 2px }
+.news-text {
+  font-size: 14px;
+  color: var(--fg-mid);
+  line-height: 1.65;
+}
+.news-text .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+.news-text a { color: var(--accent) }
+
+/* ════════════════════════════════════════
+   JOIN US
+   ════════════════════════════════════════ */
+.join-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.join-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.join-title-ja {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.join-body {
+  font-size: 14px;
+  line-height: 1.85;
+  color: rgba(200,225,255,.8);
+  margin-bottom: 24px;
+}
+.join-body .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+.join-contact {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  padding: 20px 22px;
+}
+.join-contact-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(180,215,255,.6);
+  margin-bottom: 8px;
+}
+.join-contact-label .ja { font-family: 'Noto Sans JP', sans-serif; letter-spacing: .05em; text-transform: none }
+.join-contact-item {
+  font-size: 14px;
+  color: rgba(220,240,255,.9);
+  line-height: 1.7;
+}
+.join-contact-item .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+.join-contact-item a { color: rgba(130,195,255,.9) }
+.mail-text { color: rgba(130,195,255,.95); letter-spacing: .01em }
+.mail-note { font-size: 12px; color: #9FB4CC }
+.mail-toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 200;
+  max-width: calc(100vw - 32px);
+  background: #0B1D33; color: #E2E8F0; border: 1px solid #2c4566;
+  padding: 10px 16px; border-radius: 6px; font-size: 13.5px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.25);
+}
+.mail-toast .ja { font-family: 'Noto Sans JP', sans-serif }
+
+/* ════════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════════ */
+.footer {
+  background: var(--nav-bg);
+  color: rgba(200,220,245,.6);
+  padding: 40px 0;
+  font-size: 12.5px;
+}
+.footer__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer__brand-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(220,240,255,.9);
+}
+.footer__brand-name-ja {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(180,215,255,.65);
+  letter-spacing: .06em;
+}
+.footer__address {
+  line-height: 1.85;
+  color: rgba(180,215,255,.55);
+}
+.footer__address .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: flex-start;
+}
+.footer__links a {
+  color: rgba(140,190,245,.7);
+  font-size: 12.5px;
+}
+.footer__links a:hover { color: rgba(180,215,255,.9) }
+.footer__copy {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  text-align: center;
+  color: rgba(140,175,210,.45);
+  font-size: 11.5px;
+}
+
+/* ════════════════════════════════════════
+   THREE PILLARS
+   ════════════════════════════════════════ */
+.pillars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  padding: 18px 20px;
+  background: var(--bg-alt);
+  border-radius: 8px;
+}
+.pillar-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.pillar-label.ja { font-family: 'Noto Sans JP', sans-serif; font-size: 12px }
+.pillar-x {
+  font-size: 16px;
+  color: var(--fg-dim);
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════
+   RESEARCH FLOW
+   ════════════════════════════════════════ */
+.flow-section {
+  margin-top: 28px;
+}
+.flow-heading {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 14px;
+  text-align: center;
+}
+.flow-heading.ja { font-family: 'Noto Sans JP', sans-serif; letter-spacing: .06em; text-transform: none }
+.flow-track {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  overflow-x: auto;
+  padding: 4px 0 8px;
+}
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 88px;
+  max-width: 100px;
+  flex-shrink: 0;
+}
+.flow-node {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent-lt);
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: border-color .15s;
+}
+.flow-node--end {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.flow-label {
+  font-size: 11.5px;
+  text-align: center;
+  color: var(--fg-mid);
+  line-height: 1.4;
+}
+.flow-label .ja { font-family: 'Noto Sans JP', sans-serif; font-size: 11px }
+.flow-arrow {
+  font-size: 16px;
+  color: var(--fg-dim);
+  padding: 0 2px;
+  flex-shrink: 0;
+  margin-top: 15px;
+  opacity: .5;
+}
+
+/* ════════════════════════════════════════
+   FEATURED PUB LABEL
+   ════════════════════════════════════════ */
+.pub-featured-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.pub-featured-label .ja { font-family: 'Noto Sans JP', sans-serif; letter-spacing: .04em; text-transform: none }
+.pub-badge--featured {
+  background: var(--glow) !important;
+}
+
+/* ════════════════════════════════════════
+   NAV — active state & hamburger
+   ════════════════════════════════════════ */
+.nav__links a[aria-current="page"] { color: #fff; background: rgba(255,255,255,.1) }
+.nav__right { display: flex; align-items: center; gap: 10px }
+.nav__toggle {
+  display: none;
+  width: 36px; height: 36px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 6px;
+  cursor: pointer;
+  align-items: center; justify-content: center;
+  flex-direction: column; gap: 4px;
+}
+.nav__toggle span {
+  display: block; width: 16px; height: 1.5px;
+  background: rgba(220,235,255,.9);
+  transition: transform .2s, opacity .2s;
+}
+.nav.is-open .nav__toggle span:nth-child(1) { transform: translateY(5.5px) rotate(45deg) }
+.nav.is-open .nav__toggle span:nth-child(2) { opacity: 0 }
+.nav.is-open .nav__toggle span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg) }
+
+@media (max-width: 1000px) {
+  .nav__toggle { display: inline-flex }
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 54px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--nav-bg);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 6px 16px 14px;
+  }
+  .nav.is-open .nav__links { display: flex }
+  .nav__links li { border-top: 1px solid rgba(255,255,255,.06) }
+  .nav__links li:first-child { border-top: none }
+  .nav__links a { display: block; padding: 12px 8px; font-size: 14px; border-radius: 0 }
+  body.lang-ja .nav__links a.en, body.lang-en .nav__links a.ja { display: none }
+}
+
+/* ════════════════════════════════════════
+   PAGE SWITCHING (Home / People / Lab Life)
+   ════════════════════════════════════════ */
+body:not([data-page="home"]) .page-home { display: none }
+body:not([data-page="people"]) .page-people { display: none }
+body:not([data-page="lablife"]) .page-lablife { display: none }
+
+/* ════════════════════════════════════════
+   PEOPLE
+   ════════════════════════════════════════ */
+.page-hero {
+  background: linear-gradient(180deg, #0B1D33 0%, #0E2139 70%, #12283F 100%);
+  color: #fff;
+  padding: 56px 0 52px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 70% at 88% 20%, rgba(73,52,95,.65) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 70% at 10% 90%, rgba(23,63,114,.65) 0%, transparent 68%);
+  pointer-events: none;
+}
+.page-hero .container { position: relative; z-index: 1 }
+.page-hero__eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: #AFC1D4; margin-bottom: 8px;
+}
+.page-hero__title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(28px, 4.5vw, 40px);
+  font-weight: 700; color: #fff; margin-bottom: 4px;
+}
+.page-hero__title-ja {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px; font-weight: 300; letter-spacing: .1em;
+  color: #AFC1D4; margin-bottom: 18px;
+}
+.page-hero__lead {
+  font-size: 15px; line-height: 1.85; max-width: 640px;
+  color: #E2E8F0;
+}
+.page-hero__lead .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+
+/* Photo component: initials placeholder, swapped for the image once it loads */
+.person-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 6px;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--bg-alt), var(--accent-lt));
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.person-photo__initials {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 30px; font-weight: 700; letter-spacing: .06em;
+  color: var(--fg-dim);
+}
+.person-photo img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 25%;
+  opacity: 0;
+}
+.person-photo.has-photo img { opacity: 1 }
+.person-photo.has-photo .person-photo__initials { visibility: hidden }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px }
+.chip {
+  font-size: 11.5px; font-weight: 500;
+  padding: 3px 10px; border-radius: 20px;
+  background: var(--accent-lt); color: var(--accent);
+  white-space: nowrap;
+}
+.label-sm {
+  font-size: 11px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--fg-dim); margin-bottom: 8px;
+}
+
+/* PI */
+.pi-card {
+  display: grid;
+  grid-template-columns: 35fr 65fr;
+  gap: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 32px;
+}
+.pi-card .person-photo__initials { font-size: 48px }
+.pi-role {
+  font-size: 11px; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+}
+.pi-name-ja {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(24px, 3.2vw, 30px); font-weight: 700;
+  color: var(--fg); letter-spacing: .08em; line-height: 1.3;
+}
+.pi-name-en {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 16px; color: var(--fg-mid); margin-bottom: 14px;
+}
+.pi-position { font-size: 14px; color: var(--fg); font-weight: 600 }
+.pi-affil { font-size: 13.5px; color: var(--fg-mid); line-height: 1.65; margin-bottom: 20px }
+.pi-affil .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 400 }
+.pi-bio { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border-lt) }
+.pi-bio p { font-size: 14.5px; line-height: 1.9; color: var(--fg-mid); margin-bottom: 14px }
+.pi-bio .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+.pi-focus {
+  border-left: 3px solid var(--accent);
+  background: var(--accent-lt);
+  padding: 14px 18px;
+  border-radius: 0 6px 6px 0;
+  font-size: 14.5px; line-height: 1.85; color: var(--fg-mid);
+  margin-top: 6px;
+}
+.pi-focus .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 400 }
+.pi-focus a { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 600 }
+.pi-left { display: flex; flex-direction: column; gap: 22px; align-self: start }
+.pi-more { display: inline-block; font-size: 13px; font-weight: 600; margin-top: 2px }
+.pi-career { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-lt) }
+.pi-career dl { display: grid; grid-template-columns: 92px 1fr; gap: 6px 16px; font-size: 13px; line-height: 1.6 }
+.pi-career dt { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap }
+.pi-career dd { color: var(--fg-mid) }
+.pi-career dd .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 400 }
+@media (max-width: 520px) { .pi-career dl { grid-template-columns: 1fr; gap: 0 } .pi-career dd { margin-bottom: 8px } }
+.pi-links {
+  display: flex; flex-wrap: wrap; gap: 8px 10px;
+  margin-top: 22px;
+}
+.pi-links a, .member-links a {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.5px; font-weight: 500;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--accent);
+  background: var(--bg);
+}
+.pi-links a:hover, .member-links a:hover { border-color: var(--accent); text-decoration: none }
+
+/* Member groups */
+.people-group { margin-top: 44px }
+.people-group:first-child { margin-top: 0 }
+.people-group__title {
+  font-size: 15px; font-weight: 600; color: var(--fg);
+  padding-bottom: 10px; margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+}
+.people-group__title .ja { font-family: 'Noto Sans JP', sans-serif }
+.people-group__title small { font-size: 12px; font-weight: 400; color: var(--fg-dim) }
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.member-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.member-card .person-photo { aspect-ratio: 1 / 1 }
+.member-name-ja {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 17px; font-weight: 700; color: var(--fg); letter-spacing: .06em; line-height: 1.35;
+}
+.member-name-en { font-size: 13px; color: var(--fg-mid) }
+.member-position { font-size: 13px; color: var(--accent); font-weight: 500; margin-top: 2px }
+.member-position .ja { font-family: 'Noto Sans JP', sans-serif }
+.member-affil {
+  font-size: 12px; line-height: 1.6; color: var(--fg-mid);
+  background: var(--bg-soft); border-left: 2px solid var(--border);
+  padding: 8px 10px; border-radius: 0 4px 4px 0;
+}
+.member-affil .ja { font-family: 'Noto Sans JP', sans-serif }
+.member-affil__label { font-size: 10.5px; font-weight: 600; letter-spacing: .06em; color: var(--fg-dim); margin-bottom: 2px }
+.member-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto }
+.member-links a { padding: 4px 10px; font-size: 12px }
+.people-empty { font-size: 13.5px; color: var(--fg-dim) }
+
+/* Alumni: compact list */
+.alumni-list { list-style: none }
+.alumni-list li {
+  display: grid; grid-template-columns: 136px minmax(180px, 1.1fr) 1.4fr 1.2fr; gap: 4px 20px;
+  padding: 12px 0; border-bottom: 1px solid var(--border-lt);
+  font-size: 13.5px; color: var(--fg-mid); line-height: 1.6; align-items: baseline;
+}
+.alumni-list li:first-child { border-top: 1px solid var(--border-lt) }
+.alumni-year { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums }
+.alumni-name { color: var(--fg); font-weight: 600 }
+.alumni-name small { font-weight: 400; color: var(--fg-dim); margin-left: 6px }
+.alumni-list .ja { font-family: 'Noto Sans JP', sans-serif }
+@media (max-width: 720px) {
+  .alumni-list li { grid-template-columns: 1fr }
+  .alumni-list li > * { grid-column: 1 }
+}
+
+/* Collaborators: deliberately set apart from lab members */
+.collab {
+  margin-top: 56px;
+  padding: 28px;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  background: var(--bg-soft);
+}
+.collab__note { font-size: 13px; color: var(--fg-dim); margin-bottom: 18px }
+.collab__note .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+.collab-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px }
+.collab-list li { font-size: 13.5px; color: var(--fg-mid); line-height: 1.6 }
+.collab-list strong { color: var(--fg); font-weight: 600 }
+
+/* ════════════════════════════════════════
+   HOME — People teaser
+   ════════════════════════════════════════ */
+.team-row { display: flex; flex-wrap: wrap; gap: 14px 12px; margin-bottom: 28px }
+.team-item { width: 72px; text-align: center }
+.team-item .person-photo { aspect-ratio: 1 / 1; border-radius: 6px }
+.team-item .person-photo__initials { font-size: 16px }
+.team-item__name { font-family: 'Noto Sans JP', sans-serif; font-size: 11px; color: var(--fg-mid); margin-top: 5px; line-height: 1.35 }
+.more-link { display: inline-block; font-size: 13.5px; font-weight: 600; color: var(--accent) }
+
+/* ════════════════════════════════════════
+   LAB LIFE — photo cards
+   ════════════════════════════════════════ */
+.section--life { padding: 52px 0 }
+.section__head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px }
+.section__head-row .section__header { margin-bottom: 0 }
+.life-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px }
+.life-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.life-photo {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  background: var(--bg-alt);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  color: var(--fg-dim);
+  border: 0; padding: 0; width: 100%; font: inherit;
+}
+.life-photo svg { opacity: .55 }
+.life-photo__ph { font-size: 11px; letter-spacing: .1em; text-transform: uppercase }
+.life-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0 }
+.life-photo.has-photo img { opacity: 1 }
+.life-photo.has-photo { cursor: zoom-in }
+.life-photo.has-photo > :not(img) { visibility: hidden }
+.life-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px }
+.life-date { font-size: 12px; font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: .03em }
+.life-title { font-size: 15px; font-weight: 600; color: var(--fg); line-height: 1.4 }
+.life-title .ja { font-family: 'Noto Sans JP', sans-serif }
+.life-desc { font-size: 13.5px; color: var(--fg-mid); line-height: 1.7; white-space: pre-line }
+.life-desc .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+#lifeLatest .life-desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden }
+.life-sample {
+  align-self: flex-start;
+  font-size: 10px; font-weight: 600; letter-spacing: .06em;
+  padding: 1px 7px; border-radius: 3px;
+  background: var(--bg-alt); color: var(--fg-dim); margin-bottom: 2px;
+}
+.life-year {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 20px; font-weight: 700; color: var(--fg);
+  padding-bottom: 10px; margin: 44px 0 22px;
+  border-bottom: 1px solid var(--border);
+}
+.life-year:first-child { margin-top: 0 }
+.crosslink {
+  margin-top: 48px; padding-top: 22px;
+  border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px;
+  font-size: 13.5px; color: var(--fg-dim);
+}
+.crosslink .ja { font-family: 'Noto Sans JP', sans-serif }
+.lightbox { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); margin: auto }
+.lightbox::backdrop { background: rgba(5, 12, 24, .88) }
+.lightbox img { max-width: 100%; max-height: 80vh; display: block; margin: 0 auto; border-radius: 4px }
+.lightbox__cap { color: rgba(220,240,255,.85); font-size: 13.5px; text-align: center; margin-top: 12px }
+.lightbox__cap .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+.lightbox__nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08);
+  color: #fff; font-size: 26px; line-height: 1; cursor: pointer;
+}
+.lightbox__nav--prev { left: 16px }
+.lightbox__nav--next { right: 16px }
+.lightbox__nav[hidden] { display: none }
+.life-count {
+  position: absolute; right: 10px; bottom: 10px; z-index: 1;
+  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  padding: 2px 8px; border-radius: 3px;
+  background: rgba(13,27,46,.72); color: #fff;
+}
+.life-photo.has-photo > .life-count { visibility: visible }
+.lightbox__close {
+  position: fixed; top: 16px; right: 16px;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08);
+  color: #fff; font-size: 20px; cursor: pointer;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .life-grid { grid-template-columns: repeat(2, 1fr) }
+  .member-grid { grid-template-columns: repeat(2, 1fr) }
+}
+@media (max-width: 720px) {
+  .area-grid { grid-template-columns: 1fr }
+  .join-grid { grid-template-columns: 1fr }
+  .hero { padding: 52px 20px 60px }
+  .pi-card { grid-template-columns: 1fr; gap: 24px; padding: 20px }
+  .pi-card .person-photo { max-width: 280px }
+  .collab-list { grid-template-columns: 1fr }
+  .container { padding: 0 16px }
+}
+@media (max-width: 560px) {
+  .life-grid { grid-template-columns: 1fr }
+}
+@media (max-width: 520px) {
+  .member-grid { grid-template-columns: 1fr }
+  .member-card { flex-direction: row; align-items: flex-start }
+  .member-card .person-photo { width: 96px; flex-shrink: 0 }
+  .member-card .person-photo__initials { font-size: 22px }
+}
+@media (max-width: 500px) {
+  .pub-card { flex-direction: column; gap: 8px }
+  .news-item { grid-template-columns: 1fr; gap: 2px }
+  .news-date { font-size: 11.5px }
+}
+</style>
 </head>
-
 <body>
-  <h1>Division of Microanatomy</h1>
-  <h2>Showa Medical University</h2>
 
-  <p>
-    Welcome to the official website of the Division of Microanatomy,
-    Showa Medical University.
-  </p>
+<!-- ══════════════════════════════════════════
+     NAV
+     ══════════════════════════════════════════ -->
+<nav class="nav" id="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand" style="text-decoration:none">
+      <span class="nav__brand-en">Kawanishi Lab</span>
+      <span class="nav__brand-ja">川西研究室</span>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#research" class="ja">研究</a><a href="#research" class="en">Research</a></li>
+      <li><a href="#people" class="ja">メンバー</a><a href="#people" class="en">People</a></li>
+      <li><a href="#publications" class="ja">業績</a><a href="#publications" class="en">Publications</a></li>
+      <li><a href="#platforms" class="ja">研究基盤</a><a href="#platforms" class="en">Research Platforms</a></li>
+      <li><a href="#news" class="ja">お知らせ</a><a href="#news" class="en">News</a></li>
+      <li><a href="#lab-life" class="ja">研究室の活動</a><a href="#lab-life" class="en">Lab Life</a></li>
+      <li><a href="#join" class="ja">参加案内</a><a href="#join" class="en">Join Us</a></li>
+    </ul>
+    <div class="nav__right">
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()" aria-label="Switch language">EN</button>
+      <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
 
-  <p>Our website is currently under construction.</p>
-</body>
-</html>
+<div class="page-home">
+
+<!-- ══════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════ -->
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <span class="hero__kicker ja">昭和医科大学 医学部 解剖学講座 顕微解剖学部門</span>
+    <span class="hero__kicker en">Showa Medical University School of Medicine · Department of Anatomy</span>
+
+    <h1 class="hero__title">Kawanishi Lab</h1>
+    <p class="hero__subtitle-ja ja">川西研究室</p>
+
+    <p class="hero__dept ja">昭和医科大学 医学部 解剖学講座 顕微解剖学部門<br>〒142-8555 東京都品川区旗の台1-5-8</p>
+    <p class="hero__dept en">Department of Anatomy<br>Showa Medical University School of Medicine, Tokyo, Japan</p>
+
+    <p class="hero__tagline">
+      <span class="ja" style="font-family:'Noto Sans JP',sans-serif;font-weight:300">「組織の空間から、病態を読み解く。」</span>
+      <span class="en">"Decoding disease through tissue spatial biology."</span>
+    </p>
+
+    <div class="hero__cta">
+      <a href="#research" class="btn btn--primary ja">研究内容を見る</a>
+      <a href="#research" class="btn btn--primary en">Our Research</a>
+      <a href="https://researchmap.jp/kukawanishi_2018" target="_blank" rel="noopener" class="btn btn--outline ja">researchmap</a>
+      <a href="https://researchmap.jp/kukawanishi_2018" target="_blank" rel="noopener" class="btn btn--outline en">researchmap</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CONCEPT
+     ══════════════════════════════════════════ -->
+<section class="section" id="concept">
+  <div class="container">
+    <div class="section__header">
+      <p class="section__eyebrow ja">研究室について</p>
+      <p class="section__eyebrow en">About the Lab</p>
+      <h2 class="section__title-ja ja">空間組織生物学で、病態に迫る</h2>
+      <h2 class="section__title en">Spatial Tissue Biology of Disease</h2>
+    </div>
+    <div class="concept">
+      <p class="ja">私たちの体の臓器や組織は、さまざまな種類の細胞が集まり、互いに<span class="nw">関わり合う</span>ことで<span class="nw">成り立っています</span>。病気になると、こうした細胞の状態や<span class="nw">位置関係</span>、細胞同士の<span class="nw">関わり方</span>が<span class="nw">変化します</span>。私たちは、「どの細胞が、どこにいて、何をしているのか」を明らかにする<strong><span class="nw">空間組織生物学</span><span class="nw">（Spatial Tissue Biology）</span></strong>を軸に<span class="nw">研究を進めています</span>。<span class="nw">顕微鏡による</span><span class="nw">形態観察</span>、<span class="nw">空間オミクス</span>、<span class="nw">分子・細胞生物学</span>を<span class="nw">組み合わせ</span>、<span class="nw">組織の構造</span>と<span class="nw">細胞の働き</span>を<span class="nw">一体として</span><span class="nw">捉えることを</span><span class="nw">目指します</span>。<span class="nw">腫瘍</span>、<span class="nw">腎疾患</span>、<span class="nw">炎症性疾患</span>を<span class="nw">主な対象</span>に、細胞同士の関わりを<span class="nw">組織の中で</span><span class="nw">読み解く</span>ことで、病気がどのように<span class="nw">生じ、</span><span class="nw">進行するのか</span>を<span class="nw">理解し</span>、<span class="nw">新たな治療</span>に<span class="nw">つながる</span><span class="nw">手がかり</span>を見つけたいと<span class="nw">考えています</span>。</p>
+      <p class="en">The organs and tissues of our bodies are built from many different kinds of cells that interact closely with one another. In disease, the states of these cells, their positions, and the way they communicate all change. Our research centers on <strong>spatial tissue biology</strong>: understanding which cells are present, where they are, and what they are doing. By combining microscopic morphology, spatial omics, and molecular and cell biology, we aim to see tissue structure and cellular function as a single, integrated picture. Focusing on tumors, kidney disease, and inflammatory disease, we study how cells interact within tissue in order to understand how disease arises and progresses, and to find clues that may lead to new therapies.</p>
+    </div>
+
+    <!-- Three pillars -->
+    <div class="pillars">
+      <span class="pillar-label en">Morphology</span>
+      <span class="pillar-label ja">形態学</span>
+      <span class="pillar-x">×</span>
+      <span class="pillar-label en">Spatial Biology</span>
+      <span class="pillar-label ja">空間生物学</span>
+      <span class="pillar-x">×</span>
+      <span class="pillar-label en">Molecular Mechanisms</span>
+      <span class="pillar-label ja">分子機構解析</span>
+    </div>
+
+    <!-- Research flow -->
+    <div class="flow-section">
+      <p class="flow-heading en">Research Workflow</p>
+      <p class="flow-heading ja">研究の流れ</p>
+      <div class="flow-track">
+        <div class="flow-step">
+          <div class="flow-node">🧬</div>
+          <div class="flow-label"><span class="en">Human Tissue</span><span class="ja">生体組織</span></div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-node">🔬</div>
+          <div class="flow-label"><span class="en">Morphology &amp; Spatial Biology</span><span class="ja">形態学・空間生物学</span></div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-node">📊</div>
+          <div class="flow-label"><span class="en">Cell States &amp; Interactions</span><span class="ja">細胞状態・相互作用</span></div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-node">⚗️</div>
+          <div class="flow-label"><span class="en">Molecular Mechanisms</span><span class="ja">分子機構</span></div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-node">🧫</div>
+          <div class="flow-label"><span class="en">Disease Models</span><span class="ja">疾患モデル</span></div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-node flow-node--end">💡</div>
+          <div class="flow-label"><span class="en">Disease Understanding</span><span class="ja">病態理解</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     RESEARCH AREAS
+     ══════════════════════════════════════════ -->
+<section class="section section--alt" id="research">
+  <div class="container">
+    <div class="section__header">
+      <p class="section__eyebrow ja">研究領域</p>
+      <p class="section__eyebrow en">Research Areas</p>
+      <h2 class="section__title ja">主要研究テーマ</h2>
+      <h2 class="section__title en">Our Research Programs</h2>
+    </div>
+
+    <div class="area-grid">
+      <!-- Area 1 -->
+      <div class="area-card">
+        <div class="area-icon area-icon--1">🔬</div>
+        <p class="area-num">Area 01</p>
+        <h3 class="area-title en">Tissue Microenvironment &amp; Spatial Biology</h3>
+        <h3 class="area-title-ja ja">組織微小環境と空間生物学</h3>
+        <p class="area-body">
+          <span class="en">Using spatial transcriptomics (Xenium In Situ) and multiplex immunostaining (PhenoCycler), we map cell states and spatial interactions within tissue. We are investigating how immune cells and stromal components organize the tumor microenvironment across multiple cancer types, and extending our approach to inflammatory conditions to understand shared and distinct cellular architectures.</span>
+          <span class="ja">空間トランスクリプトミクス（Xenium In Situ）・多重免疫染色（PhenoCycler）を用いて、組織内の細胞状態と空間的相互作用を解析します。複数のがん種にわたる腫瘍微小環境の細胞構築を調べるとともに、炎症性疾患にもアプローチを拡張し、共通・固有の細胞空間構造の解明に取り組んでいます。</span>
+        </p>
+        <div class="area-tags">
+          <span class="tag tag--blue">Xenium In Situ</span>
+          <span class="tag tag--magenta">PhenoCycler</span>
+          <span class="tag tag--blue">Spatial Omics</span>
+          <span class="tag tag--blue">Tumor Microenvironment</span>
+          <span class="tag tag--magenta">Inflammation</span>
+        </div>
+      </div>
+
+      <!-- Area 2 -->
+      <div class="area-card">
+        <div class="area-icon area-icon--2">🧬</div>
+        <p class="area-num">Area 02</p>
+        <h3 class="area-title en">Renal Pathology &amp; Multimodal Morphology</h3>
+        <h3 class="area-title-ja ja">腎病理とマルチモーダル形態解析</h3>
+        <p class="area-body">
+          <span class="en">We apply transmission electron microscopy (TEM) and low-vacuum scanning electron microscopy (LVSEM) to characterize ultrastructural features of renal pathology — spanning hereditary nephropathies, transplant biopsies, and inflammatory kidney disease. By integrating AI-assisted morphological analysis, we aim to quantify changes that are difficult to detect by conventional light microscopy alone.</span>
+          <span class="ja">透過型電子顕微鏡（TEM）・低真空走査型電子顕微鏡（LVSEM）を用いて、遺伝性腎症・移植腎・炎症性腎疾患における超微細形態を解析します。AI支援形態解析との統合により、従来の光学顕微鏡では捉えにくい病理変化の定量化を目指しています。</span>
+        </p>
+        <div class="area-tags">
+          <span class="tag tag--amber">TEM / LVSEM</span>
+          <span class="tag tag--amber">AI Morphology</span>
+          <span class="tag tag--blue">Renal Pathology</span>
+          <span class="tag tag--amber">Transplant</span>
+        </div>
+      </div>
+
+      <!-- Area 3 -->
+      <div class="area-card">
+        <div class="area-icon area-icon--3">🤝</div>
+        <p class="area-num">Area 03</p>
+        <h3 class="area-title en">Disease Models &amp; Translational Research</h3>
+        <h3 class="area-title-ja ja">疾患モデルと橋渡し研究</h3>
+        <p class="area-body">
+          <span class="en">We validate disease mechanisms using 3D spheroid cultures and other tissue models, and combine single-cell RNA-seq and transcriptomic analyses to reveal the molecular basis of morphological findings. Through collaborations with clinical departments and external research institutions, we apply our spatial and morphological frameworks to diverse disease contexts.</span>
+          <span class="ja">3次元スフェロイド培養等の組織モデルを用いた疾患メカニズムの検証と、単細胞RNA-seq等のトランスクリプトーム解析による形態所見の分子基盤解明を組み合わせています。臨床各科・学外研究機関との共同研究を通じて、空間解析・形態解析を多様な疾患に応用しています。</span>
+        </p>
+        <div class="area-tags">
+          <span class="tag tag--green">3D Spheroid</span>
+          <span class="tag tag--green">scRNA-seq</span>
+          <span class="tag tag--green">Transcriptomics</span>
+          <span class="tag tag--blue">Collaboration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PUBLICATIONS
+     ══════════════════════════════════════════ -->
+<section class="section" id="publications">
+  <div class="container">
+    <div class="section__header">
+      <p class="section__eyebrow ja">主要業績</p>
+      <p class="section__eyebrow en">Selected Publications</p>
+      <h2 class="section__title ja">発表論文（抜粋）</h2>
+      <h2 class="section__title en">Recent Publications</h2>
+      <p class="section__lead">
+        <span class="en">Selected recent papers. <span style="color:var(--glow);font-weight:600">Featured</span> labels highlight our key contributions to spatial tissue biology.</span>
+        <span class="ja"><span style="color:var(--glow);font-weight:600">注目論文</span> は空間組織生物学における主要成果です。</span>
+      </p>
+    </div>
+
+    <div class="pub-list">
+      <!-- PNAS 2025 -->
+      <div class="pub-card">
+        <div class="pub-year">2025</div>
+        <div class="pub-body">
+          <p class="pub-featured-label"><span class="en">Featured · Spatial Tumor Immunology</span><span class="ja">注目論文 · 空間的腫瘍免疫学</span></p>
+          <div class="pub-journal">
+            <span class="pub-badge pub-badge--featured">PNAS</span>
+            <span class="pub-journal-name">Proceedings of the National Academy of Sciences</span>
+          </div>
+          <p class="pub-title">
+            <a href="https://doi.org/10.1073/pnas.2425024122" target="_blank" rel="noopener">
+              Spatial transcriptomics reveals GPNMB<sup>+</sup> tumor-associated macrophages as key regulators of the immune desert microenvironment in triple-negative breast cancer
+            </a>
+          </p>
+          <p class="pub-authors">
+            Dang Cao TL, <strong>Kawanishi K*</strong>, Hayashi M, Nakashima M, Komohara Y, Yamashita Y.
+            <em>Proc Natl Acad Sci USA</em>. 2025. (*Corresponding author)
+          </p>
+          <a href="https://doi.org/10.1073/pnas.2425024122" class="pub-link" target="_blank" rel="noopener">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            DOI: 10.1073/pnas.2425024122
+          </a>
+        </div>
+      </div>
+
+      <!-- BMC Nephrology 2026 -->
+      <div class="pub-card">
+        <div class="pub-year">2026</div>
+        <div class="pub-body">
+          <div class="pub-journal">
+            <span class="pub-badge" style="background:#256838">BMC</span>
+            <span class="pub-journal-name">BMC Nephrology</span>
+          </div>
+          <p class="pub-title">
+            <a href="https://doi.org/10.1186/s12882-026-05088-5" target="_blank" rel="noopener">
+              Combined morphologic and immunohistochemical assessment of KIM-1-positive proximal tubular vacuolation in one-hour kidney allograft biopsies
+            </a>
+          </p>
+          <p class="pub-authors">
+            Kawanishi K, Shimokawa M, Kang D, Baba M, Kato Y, Yoshitake O, Koiwa F, Honda K, <strong>Kawanishi K*</strong>.
+            <em>BMC Nephrol</em>. 2026 Jun 5. (*Corresponding author)
+          </p>
+          <a href="https://doi.org/10.1186/s12882-026-05088-5" class="pub-link" target="_blank" rel="noopener">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            DOI: 10.1186/s12882-026-05088-5
+          </a>
+        </div>
+      </div>
+
+      <!-- Analytical and Bioanalytical Chemistry 2026 -->
+      <div class="pub-card">
+        <div class="pub-year">2026</div>
+        <div class="pub-body">
+          <div class="pub-journal">
+            <span class="pub-badge" style="background:#526478">ABC</span>
+            <span class="pub-journal-name">Analytical and Bioanalytical Chemistry</span>
+          </div>
+          <p class="pub-title">
+            <a href="https://doi.org/10.1007/s00216-026-06501-6" target="_blank" rel="noopener">
+              A hierarchical lectin-based multimodal workflow for spatial mapping of extracellular matrix glycans in fibrotic hearts
+            </a>
+          </p>
+          <p class="pub-authors">
+            産総研（AIST）との共同研究. <em>Anal Bioanal Chem</em>. 2026 Apr 27.
+          </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+            <a href="https://doi.org/10.1007/s00216-026-06501-6" class="pub-link" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              DOI: 10.1007/s00216-026-06501-6
+            </a>
+            <a href="https://unit.aist.go.jp/cmb5/ja/topics/topics41.html" class="pub-link" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="ja">産総研 プレスリリース</span><span class="en">AIST Press Release</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- AJP 2024 -->
+      <div class="pub-card">
+        <div class="pub-year">2024</div>
+        <div class="pub-body">
+          <p class="pub-featured-label"><span class="en">Featured · Deep Learning Renal Pathology</span><span class="ja">注目論文 · 深層学習腎病理形態学</span></p>
+          <div class="pub-journal">
+            <span class="pub-badge pub-badge--featured">AJP</span>
+            <span class="pub-journal-name">American Journal of Pathology</span>
+          </div>
+          <p class="pub-title">
+            <a href="https://researchmap.jp/kukawanishi_2018/published_papers/48271571" target="_blank" rel="noopener">
+              A novel deep learning approach for analyzing glomerular basement membrane lesions in a mouse model of X-linked Alport syndrome
+            </a>
+          </p>
+          <p class="pub-authors">
+            <strong>Kawanishi K*</strong>, Baba M, Kobayashi R, Hori R, Hashikami K, Danbayashi K, Iwachido T, Kato M.
+            <em>Am J Pathol</em>. 2024 Oct 18. (*First and corresponding author)
+          </p>
+          <a href="https://researchmap.jp/kukawanishi_2018/published_papers/48271571" class="pub-link" target="_blank" rel="noopener">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            researchmap
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <p class="pub-note">
+      <span class="ja">全業績リストは <a href="https://researchmap.jp/kukawanishi_2018" target="_blank" rel="noopener">researchmap</a> をご参照ください。</span>
+      <span class="en">For a complete list of publications, please visit <a href="https://researchmap.jp/kukawanishi_2018" target="_blank" rel="noopener">researchmap</a>.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     TECHNOLOGY
+     ══════════════════════════════════════════ -->
+<section class="section section--alt" id="platforms">
+  <div class="container">
+    <div class="section__header">
+      <p class="section__eyebrow ja">研究基盤</p>
+      <p class="section__eyebrow en">Research Platforms</p>
+      <h2 class="section__title ja">空間・形態・分子・AI解析の基盤</h2>
+      <h2 class="section__title en">Spatial, Morphological, Molecular &amp; AI Analysis</h2>
+    </div>
+
+    <div class="tech-grid">
+      <div class="tech-item">
+        <div class="tech-dot tech-dot--blue"></div>
+        <div>
+          <div class="tech-name"><span class="en">Xenium In Situ</span><span class="ja">Xenium In Situ</span></div>
+          <div class="tech-desc"><span class="en">Subcellular spatial transcriptomics</span><span class="ja">単細胞空間トランスクリプトミクス</span></div>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot tech-dot--magenta"></div>
+        <div>
+          <div class="tech-name"><span class="en">PhenoCycler</span><span class="ja">PhenoCycler</span></div>
+          <div class="tech-desc"><span class="en">Cyclic multiplex immunostaining</span><span class="ja">サイクリック多重免疫染色</span></div>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot tech-dot--amber"></div>
+        <div>
+          <div class="tech-name"><span class="en">TEM / LVSEM</span><span class="ja">透過型・低真空走査型EM</span></div>
+          <div class="tech-desc"><span class="en">Ultrastructural electron microscopy</span><span class="ja">超微細構造電子顕微鏡</span></div>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot tech-dot--blue"></div>
+        <div>
+          <div class="tech-name"><span class="en">AI Morphology</span><span class="ja">AI支援形態解析</span></div>
+          <div class="tech-desc"><span class="en">Deep learning pathological analysis</span><span class="ja">深層学習による病理解析</span></div>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot tech-dot--green"></div>
+        <div>
+          <div class="tech-name"><span class="en">scRNA-seq</span><span class="ja">単細胞RNA-seq</span></div>
+          <div class="tech-desc"><span class="en">Single-cell transcriptomics</span><span class="ja">単細胞トランスクリプトーム解析</span></div>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot tech-dot--green"></div>
+        <div>
+          <div class="tech-name"><span class="en">3D Spheroid Culture</span><span class="ja">3Dスフェロイド培養</span></div>
+          <div class="tech-desc"><span class="en">3D tissue model systems</span><span class="ja">三次元組織モデル系</span></div>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot tech-dot--blue"></div>
+        <div>
+          <div class="tech-name"><span class="en">Spatial Multi-omics</span><span class="ja">空間マルチオミクス</span></div>
+          <div class="tech-desc"><span class="en">Integrated multi-layer spatial analysis</span><span class="ja">統合空間マルチオミクス解析</span></div>
+        </div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-dot tech-dot--magenta"></div>
+        <div>
+          <div class="tech-name"><span class="en">Image Analysis</span><span class="ja">画像解析</span></div>
+          <div class="tech-desc"><span class="en">Quantitative morphological analysis</span><span class="ja">定量的形態解析</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PEOPLE (home teaser — rendered from PEOPLE_DATA)
+     ══════════════════════════════════════════ -->
+<section class="section section--alt" id="people-home">
+  <div class="container">
+    <div class="section__header">
+      <p class="section__eyebrow ja">メンバー</p>
+      <p class="section__eyebrow en">People</p>
+      <h2 class="section__title ja">研究室のメンバー</h2>
+      <h2 class="section__title en">Our Team</h2>
+      <p class="section__lead">
+        <span class="ja">異なる専門性を持つメンバーが、形態学・空間生物学・分子生物学を横断して研究に取り組んでいます。</span>
+        <span class="en">Our members bring different areas of expertise and work across morphology, spatial biology, and molecular biology.</span>
+      </p>
+    </div>
+    <div class="team-row" id="teamRow"></div>
+    <a href="#people" class="more-link"><span class="ja">メンバー紹介を見る →</span><span class="en">Meet the team →</span></a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     NEWS
+     ══════════════════════════════════════════ -->
+<section class="section" id="news">
+  <div class="container">
+    <div class="section__header">
+      <p class="section__eyebrow ja">お知らせ</p>
+      <p class="section__eyebrow en">News</p>
+      <h2 class="section__title ja">最新情報</h2>
+      <h2 class="section__title en">Latest News</h2>
+    </div>
+
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-date">2026.10</div>
+        <div>
+          <span class="news-badge news-badge--recruit">Recruitment</span>
+          <div class="news-text">
+            <span class="ja"><span class="news-title">助教または講師の募集を開始しました</span><br>2026年10月、顕微解剖学部門では助教または講師1名の募集を開始しました。組織学・発生学の教育とともに、腫瘍、腎疾患、炎症・免疫などを対象とした研究に一緒に取り組んでいただける方を募集しています。これまでの研究経験を活かしながら、新しい研究領域や解析技術に挑戦したい方も歓迎します。詳細は <a href="https://jrecin.jst.go.jp/seek/SeekJorDetail?id=D126100384" target="_blank" rel="noopener">JREC-IN Portalの募集ページ</a> をご覧ください。</span>
+            <span class="en"><span class="news-title">Faculty position open: Assistant Professor or Lecturer</span><br>In October 2026 the Division of Microscopic Anatomy began recruiting one Assistant Professor or Lecturer. We are looking for a colleague to teach histology and embryology and to work with us on research into cancer, kidney disease, and inflammation and immunity. Candidates who wish to build on their existing expertise while taking on new research areas or analytical techniques are also welcome. For details, please see the <a href="https://jrecin.jst.go.jp/seek/SeekJorDetail?id=D126100384" target="_blank" rel="noopener">JREC-IN Portal posting</a> (in Japanese).</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026.09</div>
+        <div>
+          <span class="news-badge news-badge--award">Degree</span>
+          <div class="news-text">
+            <span class="ja">大学院生の河西恵州先生が博士（医学）の学位を取得しました。おめでとうございます。</span>
+            <span class="en">Graduate student Keishu Kawanishi has been awarded a PhD in Medicine. Congratulations!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026.06</div>
+        <div>
+          <span class="news-badge news-badge--pub">Publication</span>
+          <div class="news-text">
+            <span class="ja">大学院生・河西恵州先生の論文が <em>BMC Nephrology</em> 誌にアクセプトされました。腎移植1時間生検におけるKIM-1陽性近位尿細管空胞化の形態学的・免疫組織化学的評価に関する研究です。 <a href="https://doi.org/10.1186/s12882-026-05088-5" target="_blank" rel="noopener">DOI: 10.1186/s12882-026-05088-5</a></span>
+            <span class="en">A paper by graduate student Keishu Kawanishi has been accepted in <em>BMC Nephrology</em>, on combined morphologic and immunohistochemical assessment of KIM-1-positive proximal tubular vacuolation in one-hour kidney allograft biopsies. <a href="https://doi.org/10.1186/s12882-026-05088-5" target="_blank" rel="noopener">DOI: 10.1186/s12882-026-05088-5</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026.05</div>
+        <div>
+          <span class="news-badge news-badge--media">Media</span>
+          <div class="news-text">
+            <span class="ja">川西邦夫教授と本田一穂特任教授の対談「疾患を3次元で見る目 ～形態学×LVSEM×AIが拓く新時代～」が <a href="https://www.hitachi-hightech.com/jp/ja/sinews/special/032/" target="_blank" rel="noopener">日立ハイテク SI NEWS</a> に掲載されました。</span>
+            <span class="en">An interview with Prof. Kunio Kawanishi and Prof. Kazuho Honda, "3D Vision of Disease: Morphology × LVSEM × AI," was published in <a href="https://www.hitachi-hightech.com/jp/ja/sinews/special/032/" target="_blank" rel="noopener">Hitachi High-Tech SI NEWS</a>.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026.04</div>
+        <div>
+          <span class="news-badge news-badge--pub">Publication</span>
+          <div class="news-text">
+            <span class="ja">杏林大学との共同研究論文が <em>Biochemical and Biophysical Research Communications</em> 誌に掲載されました。USP40がインテグリンβ1の脱ユビキチン化を介してポドサイトを保護することを示した研究です。<a href="https://doi.org/10.1016/j.bbrc.2026.153840" target="_blank" rel="noopener">DOI: 10.1016/j.bbrc.2026.153840</a></span>
+            <span class="en">A collaborative paper with Kyorin University has been published in <em>Biochemical and Biophysical Research Communications</em>, showing that USP40 protects podocytes by deubiquitylating integrin β1. <a href="https://doi.org/10.1016/j.bbrc.2026.153840" target="_blank" rel="noopener">DOI: 10.1016/j.bbrc.2026.153840</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026.04</div>
+        <div>
+          <span class="news-badge news-badge--pub">Publication</span>
+          <div class="news-text">
+            <span class="ja">東京女子医科大学との共同研究論文が <em>Histopathology</em> 誌に掲載されました。慢性活動性抗体関連型拒絶反応において、C4dを補完する内皮リモデリングマーカーとしての糸球体PLVAP-1に関する研究です。<a href="https://doi.org/10.1111/his.70162" target="_blank" rel="noopener">DOI: 10.1111/his.70162</a></span>
+            <span class="en">A collaborative paper with Tokyo Women's Medical University has been published in <em>Histopathology</em>, on glomerular plasmalemma vesicle-associated protein-1 as an endothelial remodelling marker complementing C4d in chronic active antibody-mediated rejection. <a href="https://doi.org/10.1111/his.70162" target="_blank" rel="noopener">DOI: 10.1111/his.70162</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026.04</div>
+        <div>
+          <span class="news-badge news-badge--org">Member</span>
+          <div class="news-text">
+            <span class="ja">馬場正樹 助教が研究室に加わりました。</span>
+            <span class="en">Masaki Baba, Ph.D. (Assistant Professor) joined the laboratory.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026.04</div>
+        <div>
+          <span class="news-badge news-badge--org">Member</span>
+          <div class="news-text">
+            <span class="ja">大学院留学生の関 宇燦（Yucan Guan）さんが研究室に加わりました。</span>
+            <span class="en">Yucan Guan joined the laboratory as an international graduate student.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026.04</div>
+        <div>
+          <span class="news-badge news-badge--pub">Publication</span>
+          <div class="news-text">
+            <span class="ja">産総研との共同研究論文が <em>Analytical and Bioanalytical Chemistry</em> 誌に掲載されました。線維化心臓における細胞外マトリックス糖鎖の空間マッピングに関する研究です。<a href="https://unit.aist.go.jp/cmb5/ja/topics/topics41.html" target="_blank" rel="noopener">産総研トピックス</a></span>
+            <span class="en">A collaborative paper with AIST has been published in <em>Analytical and Bioanalytical Chemistry</em>, presenting a hierarchical lectin-based multimodal workflow for spatial mapping of ECM glycans in fibrotic hearts. <a href="https://unit.aist.go.jp/cmb5/ja/topics/topics41.html" target="_blank" rel="noopener">AIST Topics</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026.01</div>
+        <div>
+          <span class="news-badge news-badge--award">Degree</span>
+          <div class="news-text">
+            <span class="ja">大学院生の梶尾優希さん（指導：本田一穂 前教授）が博士（医学）の学位を取得しました。おめでとうございます。</span>
+            <span class="en">Graduate student Yuki Kajio (supervised by former Professor Kazuho Honda) has been awarded a PhD in Medicine. Congratulations!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2025.11</div>
+        <div>
+          <span class="news-badge news-badge--award">Award</span>
+          <div class="news-text">
+            <span class="ja">川西邦夫が <a href="https://researchmap.jp/kukawanishi_2018/awards/51614818" target="_blank" rel="noopener">山中賞</a>（メディカルLVSEM研究会）を受賞しました。</span>
+            <span class="en">Kunio Kawanishi received the <a href="https://researchmap.jp/kukawanishi_2018/awards/51614818" target="_blank" rel="noopener">Yamanaka Award</a> from the Medical LVSEM Research Society.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2025.09</div>
+        <div>
+          <span class="news-badge news-badge--pub">Publication</span>
+          <div class="news-text">
+            <span class="ja">PNAS誌に共著論文が掲載されました。Xenium In Situを用いたTNBCにおけるGPNMB<sup>+</sup> 腫瘍関連マクロファージと免疫砂漠微小環境に関する研究成果です。<a href="https://www.tsukuba.ac.jp/journal/medicine-health/20250902040000.html" target="_blank" rel="noopener">筑波大学プレスリリース</a></span>
+            <span class="en">Our collaborative paper on GPNMB<sup>+</sup> tumor-associated macrophages shaping the immune desert microenvironment in TNBC, using Xenium In Situ, has been published in <em>PNAS</em>. <a href="https://www.tsukuba.ac.jp/journal/medicine-health/20250902040000.html" target="_blank" rel="noopener">Tsukuba University Press Release</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2025.06</div>
+        <div>
+          <span class="news-badge news-badge--pub">Publication</span>
+          <div class="news-text">
+            <span class="ja"><em>Proceedings of the Japan Academy, Series B</em> 誌に共著論文が掲載されました。新たな糸球体疾患モデルを用いて、局所のアンジオテンシンII制御を介した腎臓の代償的なバランス機構を示した研究です。<a href="https://doi.org/10.2183/pjab.101.025" target="_blank" rel="noopener">DOI: 10.2183/pjab.101.025</a></span>
+            <span class="en">A co-authored paper has been published in <em>Proceedings of the Japan Academy, Series B</em>, describing a novel glomerulopathy model that demonstrates renal counterbalance via local angiotensin II regulation. <a href="https://doi.org/10.2183/pjab.101.025" target="_blank" rel="noopener">DOI: 10.2183/pjab.101.025</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2025.04</div>
+        <div>
+          <span class="news-badge news-badge--org">Organization</span>
+          <div class="news-text">
+            <span class="ja">川西邦夫が顕微解剖学部門 教授に着任しました。</span>
+            <span class="en">Kunio Kawanishi was appointed Professor, Department of Anatomy.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     LAB LIFE (home — latest 3, rendered from LAB_LIFE)
+     ══════════════════════════════════════════ -->
+<section class="section section--alt section--life" id="lab-life-home">
+  <div class="container">
+    <div class="section__head-row">
+      <div class="section__header">
+        <p class="section__eyebrow ja">Lab Life</p>
+        <h2 class="section__title ja">研究室の活動</h2>
+        <h2 class="section__title en">Lab Life</h2>
+      </div>
+      <a href="#lab-life" class="more-link"><span class="ja">研究室の活動を見る →</span><span class="en">View Lab Life →</span></a>
+    </div>
+    <div class="life-grid" id="lifeLatest"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     JOIN US
+     ══════════════════════════════════════════ -->
+<section class="section section--dark" id="join">
+  <div class="container">
+    <div class="join-grid">
+      <div>
+        <h2 class="join-title en">Join Our Lab</h2>
+        <h2 class="join-title-ja ja">研究室への参加</h2>
+        <p class="join-body">
+          <span class="en">We are looking for graduate students, physicians, and researchers interested in the pathobiology of cancer, kidney disease, and inflammatory disorders, or in tissue morphology, cell biology, and spatial analysis. You may build on the expertise you already have, or take the opportunity to learn new analytical approaches. We are also glad to discuss potential collaborations.</span>
+          <span class="ja">がん、腎疾患、炎症性疾患の病態研究や、組織形態学・細胞生物学・空間解析に関心のある大学院生、研究を志す医師・研究者を歓迎しています。これまでの専門分野を活かした研究はもちろん、新しい解析手法に挑戦したい方の参加もお待ちしています。共同研究についてもお気軽にご相談ください。</span>
+        </p>
+        <div>
+          <a href="#join" class="btn btn--outline en js-mail">Get in Touch</a>
+          <a href="#join" class="btn btn--outline ja js-mail">お問い合わせ</a>
+        </div>
+      </div>
+      <div class="join-contact">
+        <div class="join-contact-label"><span class="en">Contact</span><span class="ja">連絡先</span></div>
+        <div class="join-contact-item">
+          <span class="ja">川西 邦夫（教授）<br>昭和医科大学 医学部 解剖学講座 顕微解剖学部門<br>〒142-8555 東京都品川区旗の台1-5-8<br></span>
+          <span class="en">Kunio Kawanishi, MD, PhD (Professor)<br>Department of Anatomy<br>Showa Medical University School of Medicine<br>1-5-8 Hatanodai, Shinagawa-ku, Tokyo 142-8555, Japan<br></span>
+          <span class="mail-text">micro-anatomy（at）med.showa-u.ac.jp</span><br>
+          <span class="mail-note ja">※(at)を@に変更して送信してください。</span>
+          <span class="mail-note en">*Please replace (at) with @ when sending.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.page-home -->
+
+<!-- ══════════════════════════════════════════
+     PEOPLE (separate page, shown at #people)
+     Content lives in PEOPLE_DATA in the script below;
+     this markup is only the layout shell.
+     ══════════════════════════════════════════ -->
+<main class="page-people" id="people-page">
+  <header class="page-hero">
+    <div class="container">
+      <p class="page-hero__eyebrow">Kawanishi Lab</p>
+      <h1 class="page-hero__title">People</h1>
+      <p class="page-hero__title-ja">メンバー</p>
+      <p class="page-hero__lead">
+        <span class="ja">異なる専門性を持つメンバーが、形態学・空間生物学・分子生物学を横断して研究に取り組んでいます。</span>
+        <span class="en">Our members bring different areas of expertise and work across morphology, spatial biology, and molecular biology.</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- Principal Investigator -->
+  <section class="section">
+    <div class="container">
+      <article class="pi-card" id="piCard"></article>
+    </div>
+  </section>
+
+  <!-- Laboratory Members -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__eyebrow ja">Laboratory Members</p>
+        <p class="section__eyebrow en">Members</p>
+        <h2 class="section__title ja">研究室メンバー</h2>
+        <h2 class="section__title en">Laboratory Members</h2>
+      </div>
+      <div id="memberGroups"></div>
+
+      <!-- Alumni: rendered only when PEOPLE_DATA.alumni has entries -->
+      <div class="people-group" id="alumniBlock" hidden>
+        <h3 class="people-group__title">
+          <span class="en">Alumni</span><span class="ja">Alumni</span>
+          <small class="ja">卒業生・旧メンバー</small><small class="en">Former members</small>
+        </h3>
+        <ul class="alumni-list" id="alumniList"></ul>
+      </div>
+
+      <!-- Collaborators: rendered only when PEOPLE_DATA.collaborators has entries
+           and PEOPLE_DATA.collaboratorsOnPeoplePage is true -->
+      <div class="collab" id="collabBlock" hidden>
+        <h3 class="people-group__title" style="border-bottom:none;margin-bottom:6px">
+          <span class="en">Collaborators</span><span class="ja">共同研究者</span>
+        </h3>
+        <p class="collab__note">
+          <span class="ja">学内外で共同研究を行っている研究者です（研究室所属メンバーではありません）。</span>
+          <span class="en">Researchers we work with at other departments and institutions. They are not members of the laboratory.</span>
+        </p>
+        <ul class="collab-list" id="collabList"></ul>
+      </div>
+
+      <div class="crosslink">
+        <span><span class="ja">研究室の日常や学会・共同研究の様子は</span><span class="en">See what day-to-day life in the lab looks like</span></span>
+        <a href="#lab-life" class="more-link"><span class="ja">研究室の活動を見る →</span><span class="en">Lab Life →</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════════════════════════════════════
+     LAB LIFE (separate page, shown at #lab-life)
+     Content lives in LAB_LIFE in the script below.
+     ══════════════════════════════════════════ -->
+<main class="page-lablife" id="lab-life-page">
+  <header class="page-hero">
+    <div class="container">
+      <p class="page-hero__eyebrow">Kawanishi Lab</p>
+      <h1 class="page-hero__title">Lab Life</h1>
+      <p class="page-hero__title-ja">研究室の活動</p>
+      <p class="page-hero__lead">
+        <span class="ja">学会・研究会、Lab Meeting、共同研究や研究者の訪問など、研究室の日々の活動を写真で紹介します。</span>
+        <span class="en">Conferences, lab meetings, collaborations, and visitors: a look at everyday life in the lab.</span>
+      </p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div id="lifeAll"></div>
+      <div class="crosslink">
+        <span><span class="ja">研究室への参加や共同研究に関心をお持ちの方へ</span><span class="en">Interested in joining us or collaborating?</span></span>
+        <span style="display:flex;gap:20px;flex-wrap:wrap">
+          <a href="#people" class="more-link"><span class="ja">メンバー →</span><span class="en">People →</span></a>
+          <a href="#join" class="more-link"><span class="ja">参加案内 →</span><span class="en">Join Us →</span></a>
+        </span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="mail-toast" id="mailToast" role="status" hidden></div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photo">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous">‹</button>
+  <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next">›</button>
+  <img id="lightboxImg" alt="">
+  <p class="lightbox__cap" id="lightboxCap"></p>
+</dialog>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__brand-name">Kawanishi Lab</div>
+      <div class="footer__brand-name-ja">川西研究室</div>
+      <div class="footer__address" style="margin-top:8px">
+        <span class="ja">昭和医科大学 医学部<br>解剖学講座 顕微解剖学部門<br>〒142-8555 東京都品川区旗の台1-5-8</span>
+        <span class="en">Showa Medical University School of Medicine<br>Department of Anatomy<br>1-5-8 Hatanodai, Shinagawa-ku, Tokyo 142-8555, Japan</span>
+      </div>
+    </div>
+    <div class="footer__links">
+      <a href="https://researchmap.jp/kukawanishi_2018" target="_blank" rel="noopener">Researchmap</a>
+      <a href="https://www.showa-u.ac.jp/education/med/major/anat-1.html" target="_blank" rel="noopener"><span class="ja">昭和医科大学 顕微解剖学部門（公式ページ）</span><span class="en">Showa Medical University (official department page)</span></a>
+      <a href="https://lv-sem.org" target="_blank" rel="noopener"><span class="ja">メディカルLVSEM研究会</span><span class="en">Medical LVSEM Research Society</span></a>
+      <a href="#lab-life"><span class="ja">研究室の活動</span><span class="en">Lab Life</span></a>
+      <a href="#join" class="js-mail">Contact</a>
+    </div>
+  </div>
+  <div class="footer__copy container">
+    &copy; Kawanishi Laboratory, Showa Medical University School of Medicine. All rights reserved.
+  </div>
+</footer>
+
+<script>
+/* ════════════════════════════════════════
+   PEOPLE DATA — edit here to add, remove or reorder people.
+   Photos: put files in images/people/ (e.g. images/people/kunio-kawanishi.jpg).
+   A missing photo shows an initials placeholder automatically.
+   Only add information the person has confirmed.
+   ════════════════════════════════════════ */
+const PHOTO_DIR = '/images/people/';
+
+const PEOPLE_DATA = {
+  pi: {
+    nameJa: '川西 邦夫',
+    nameEn: 'Kunio Kawanishi',
+    degrees: 'MD, PhD',
+    positionJa: '教授',
+    positionEn: 'Professor',
+    affiliationJa: '昭和医科大学 医学部 解剖学講座 顕微解剖学部門',
+    affiliationEn: 'Department of Anatomy, Showa Medical University School of Medicine',
+    photo: 'kunio-kawanishi.jpg',
+    interests: [
+      'Tissue Microenvironment',
+      'Spatial Biology',
+      'Renal Pathology',
+      'Cancer Biology',
+      'Glycobiology',
+      'Multimodal Morphology'
+    ],
+    // Biography: text supplied by Prof. Kawanishi; facts consistent with researchmap / Showa researcher profile.
+    // Arc: Clinical Nephrology → Renal Research & Pathology → Glycobiology → Tissue Microenvironment & Spatial Biology
+    bioJa: [
+      '2006年に富山医科薬科大学医学部を卒業後、信州大学医学部附属病院およびJA長野松代総合病院で初期研修を行い、東京女子医科大学第四内科（腎臓内科）で腎臓内科医として臨床経験を積みました。同大学大学院では腎疾患を対象とした基礎研究に取り組み、2013年に博士（医学）を取得。その後、同大学病理診断科の助教として、腎臓病学を基盤に病理学・形態学へと研究領域を広げました。',
+      '2015年から2018年まで、カリフォルニア大学サンディエゴ校 Glycobiology Research and Training Center に博士研究員として留学し、糖鎖生物学の研究に従事しました。2017年からはAmerican Heart Association Postdoctoral Fellowとして研究を進めました。帰国後は筑波大学医学医療系の腎・血管病理学、実験病理学でテニュアトラック助教・助教を務め、腎病理学を基盤としながら、がん生物学、腫瘍微小環境、空間オミクスへと研究を展開してきました。',
+      '2024年に昭和大学医学部 解剖学講座 顕微解剖学部門 准教授に着任し、2025年4月より昭和医科大学医学部 同部門 教授。現在は、これまで培ってきた臨床医学、病理学、糖鎖生物学、分子生物学を背景に、空間トランスクリプトミクス、多重組織イメージング、電子顕微鏡、AI画像解析などを組み合わせ、がん・腎疾患・炎症性疾患における組織微小環境の研究を進めています。'
+    ],
+    bioEn: [
+      'Kunio Kawanishi received his medical degree from Toyama Medical and Pharmaceutical University in 2006. After residency at Shinshu University Hospital and JA Nagano Matsushiro General Hospital, he gained clinical experience as a nephrologist in the Fourth Department of Internal Medicine (Nephrology) at Tokyo Women\'s Medical University. His graduate work there centered on basic research in kidney disease, and he earned his PhD in 2013. As an Assistant Professor in the university\'s Department of Pathological Diagnosis, he went on to build on this nephrology background, extending his work into pathology and tissue morphology.',
+      'From 2015 to 2018 he was a postdoctoral researcher at the Glycobiology Research and Training Center, University of California, San Diego, where he pursued research in glycobiology, supported from 2017 by an American Heart Association Postdoctoral Fellowship. On returning to Japan he joined the Institute of Medicine, University of Tsukuba, as a tenure-track Assistant Professor in Renal and Vascular Pathology and subsequently in Experimental Pathology. With renal pathology as his foundation, his research there expanded into cancer biology, the tumor microenvironment, and spatial omics.',
+      'He was appointed Associate Professor in the Department of Anatomy at Showa University in 2024 and has been Professor at Showa Medical University School of Medicine since April 2025. Drawing on his background in clinical medicine, pathology, glycobiology, and molecular biology, his current research combines spatial transcriptomics, multiplexed tissue imaging, electron microscopy, and AI-based image analysis to study tissue microenvironments in cancer, kidney disease, and inflammatory disease.'
+    ],
+    // Selected appointments (concise; full history on researchmap)
+    career: [
+      { years: '2025–',       ja: '昭和医科大学 医学部 解剖学講座 顕微解剖学部門 教授',              en: 'Professor, Department of Anatomy, Showa Medical University School of Medicine' },
+      { years: '2024–2025',   ja: '昭和大学 医学部 解剖学講座 顕微解剖学部門 准教授',                en: 'Associate Professor, Department of Anatomy, Showa University School of Medicine' },
+      { years: '2018–2024',   ja: '筑波大学 医学医療系 腎・血管病理学／実験病理学 テニュアトラック助教・助教', en: 'Assistant Professor (tenure track), Renal and Vascular Pathology / Experimental Pathology, University of Tsukuba' },
+      { years: '2015–2018',   ja: 'カリフォルニア大学サンディエゴ校 Glycobiology Research and Training Center 博士研究員', en: 'Postdoctoral Researcher, Glycobiology Research and Training Center, University of California, San Diego' },
+      { years: '2013–2016',   ja: '東京女子医科大学 病理診断科 助教',                                en: 'Assistant Professor, Department of Pathological Diagnosis, Tokyo Women\'s Medical University' },
+      { years: '2013',        ja: '博士（医学）東京女子医科大学',                                    en: 'PhD, Tokyo Women\'s Medical University' },
+      { years: '2006',        ja: '富山医科薬科大学 医学部 卒業',                                    en: 'MD, Toyama Medical and Pharmaceutical University' }
+    ],
+    links: [
+      { label: 'Researchmap', url: 'https://researchmap.jp/kukawanishi_2018' },
+      { labelJa: '昭和医科大学 研究者情報', labelEn: 'Showa Medical University Profile', url: 'https://rira.showa-u.ac.jp/profile/ja.a255c80ecb43b09a5471fd186680f595.html' },
+      { label: 'ORCID', url: 'https://orcid.org/0000-0003-3502-3467' },
+      { label: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/?term=Kawanishi+Kunio%5BFull+Author+Name%5D&sort=date' },
+      { labelJa: 'メディカルLVSEM研究会（世話人）', labelEn: 'Medical LVSEM Research Society (Steering Committee)', url: 'https://lv-sem.org' }
+    ]
+  },
+
+  // Display order of lab-member categories. Empty categories are not shown.
+  categories: [
+    { id: 'faculty',  en: 'Faculty / Staff',                                ja: '教員・スタッフ' },
+    { id: 'graduate',      en: 'Graduate Students (Graduate School of Medicine)', ja: '大学院生（医学研究科）' },
+    { id: 'international', en: 'International Graduate Students',                 ja: '大学院留学生' },
+    { id: 'visiting',      en: 'Visiting Researchers',                            ja: '客員研究者' }
+  ],
+
+  // Lab members. Fields: category, nameJa, nameEn, positionJa, positionEn,
+  // photo (filename in PHOTO_DIR), interests (2–4), email, researchmap, orcid — all optional except names.
+  // affiliationJa/En (array of lines): set only for members whose primary affiliation is another department.
+  members: [
+    {
+      category: 'faculty',
+      nameJa: '澤 智華',
+      nameEn: 'Chika Sawa',
+      positionJa: '准教授',
+      positionEn: 'Associate Professor',
+      photo: 'chika-sawa.jpg',
+      interests: [],
+      researchmap: 'https://researchmap.jp/chika_sawa'
+    },
+    {
+      category: 'faculty',
+      nameJa: '康 德東',
+      nameEn: 'Dedong Kang',
+      positionJa: '准教授',
+      positionEn: 'Associate Professor',
+      photo: 'dedong-kang.jpg',
+      interests: [],
+      researchmap: 'https://researchmap.jp/kang-research-view'
+    },
+    {
+      category: 'faculty',
+      nameJa: '馬場 正樹',
+      nameEn: 'Masaki Baba',
+      positionJa: '助教',
+      positionEn: 'Assistant Professor',
+      photo: 'masaki-baba.jpg',
+      interests: [],
+      researchmap: 'https://researchmap.jp/masaki.baba-2026'
+    },
+    {
+      category: 'graduate',
+      nameJa: '下川 麻由',
+      nameEn: 'Mayu Shimokawa',
+      positionJa: '大学院生',
+      positionEn: 'Graduate Student',
+      photo: 'mayu-shimokawa.jpg',
+      interests: []
+    },
+    {
+      category: 'graduate',
+      nameJa: '須郷 加奈子',
+      nameEn: 'Kanako Sugo',
+      positionJa: '大学院生',
+      positionEn: 'Graduate Student',
+      photo: 'kanako-sugo.jpg',
+      interests: []
+    },
+    {
+      category: 'graduate',
+      nameJa: '田村 詩帆',
+      nameEn: 'Shiho Tamura',
+      positionJa: '大学院生',
+      positionEn: 'Graduate Student',
+      photo: 'shiho-tamura.jpg',
+      interests: []
+    },
+    {
+      category: 'graduate',
+      nameJa: '嶋崎 健一郎',
+      nameEn: 'Kenichiro Shimazaki',
+      positionJa: '大学院生',
+      positionEn: 'Graduate Student',
+      photo: 'kenichiro-shimazaki.jpg',
+      interests: []
+    },
+    {
+      // Research in this lab; primary affiliation is another department (shown on the card).
+      category: 'graduate',
+      nameJa: '富田 佳賢',
+      nameEn: 'Yoshitaka Tomita',
+      positionJa: '大学院生',
+      positionEn: 'Graduate Student',
+      affiliationJa: ['昭和医科大学 医学部 救急・災害医学講座', '昭和医科大学病院 救命救急科'],
+      affiliationEn: ['Department of Emergency and Disaster Medicine, Showa Medical University School of Medicine', 'Department of Emergency and Critical Care Medicine, Showa Medical University Hospital'],
+      photo: 'yoshitaka-tomita.jpg',
+      interests: []
+    },
+    {
+      category: 'international',
+      nameJa: '関 宇燦',
+      nameEn: 'Yucan Guan',
+      positionJa: '大学院留学生',
+      positionEn: 'International Graduate Student',
+      photo: 'yucan-guan.jpg',
+      interests: []
+    }
+  ],
+
+  // Alumni: former members, shown as a compact list (no photos), newest first.
+  // Fields: period (shown, e.g. '2024.04–2026.04'), end ('YYYY.MM', used for sorting),
+  // nameJa, nameEn, noteJa/En (degree or former position),
+  // currentJa/En (current position, optional — only with the person's agreement).
+  alumni: [
+    {
+      period: '–2026.01',
+      end: '2026.01',
+      nameJa: '梶尾 優希',
+      nameEn: 'Yuki Kajio',
+      noteJa: '大学院生（博士（医学）取得／指導：本田一穂 前教授）',
+      noteEn: 'Graduate Student (PhD in Medicine; supervisor: former Prof. Kazuho Honda)'
+    },
+    {
+      period: '2024.04–2026.04',
+      end: '2026.04',
+      nameJa: '朱 月新',
+      nameEn: 'Yuexin Zhu',
+      noteJa: '博士研究員',
+      noteEn: 'Postdoctoral Researcher'
+    },
+    {
+      period: '2025.04–2026.03',
+      end: '2026.03',
+      nameJa: '白 雪',
+      nameEn: 'Xue Bai',
+      noteJa: '大学院留学生',
+      noteEn: 'International Graduate Student'
+    },
+    {
+      period: '–2026.09',
+      end: '2026.09',
+      nameJa: '河西 恵州',
+      nameEn: 'Keishu Kawanishi',
+      noteJa: '大学院生（博士（医学）取得）',
+      noteEn: 'Graduate Student (PhD in Medicine)'
+    }
+  ],
+
+  // Collaborators are NOT lab members and are shown in a separate, clearly labelled block.
+  // If the list grows, set collaboratorsOnPeoplePage to false and move it to a Collaborations page.
+  collaboratorsOnPeoplePage: true,
+  collaborators: [
+    // { nameJa: '', nameEn: '', affiliationJa: '', affiliationEn: '', url: '' }
+  ]
+};
+
+/* ════════════════════════════════════════
+   LAB LIFE DATA — newest entries appear first automatically (sorted by date).
+   To add an entry: put the photo in images/events/ and add one object below.
+     date           'YYYY.MM'
+     titleJa/En     short title
+     descriptionJa/En  1–2 sentences (use \n for a paragraph break)
+     image          filename in EVENT_DIR (omit or leave '' for a placeholder)
+     images         several filenames instead of image; the first is shown on the card
+     alt            optional alt text (English)
+     focus          optional CSS object-position for the card crop, e.g. 'center 22%' for portrait photos
+     sample         true = layout example; delete these before going public
+
+   管理者向けメモ（サイトには表示されません）
+   - 写っている人全員（メンバー・来訪者）から掲載許可を得た写真のみ使用すること。
+   - 次のものが写り込んでいないか確認すること：患者情報・個人情報、未発表データ、
+     研究ノートの詳細、PC画面上の機密情報、投稿前論文のFigure、
+     学会発表前の未公開スライドやポスター、共同研究先との機密情報。
+   - 写真は横長（4:3程度）・長辺1600px前後・JPEGに書き出すと表示が安定します。
+   ════════════════════════════════════════ */
+const EVENT_DIR = '/images/events/';
+
+const LAB_LIFE = [
+  {
+    date: '2026.04',
+    titleJa: '日本病理学会総会（札幌）',
+    titleEn: 'JSP Annual Meeting, Sapporo',
+    descriptionJa: '2026年4月、日本病理学会総会（札幌）に参加しました。\n川西教授は腎癌の微小環境、康准教授は膜性腎症の質量分析に関する研究成果をそれぞれ発表しました。馬場正樹助教も参加し、最新の研究成果に触れる貴重な機会となりました。\n多くの刺激を受けた素晴らしい学会となり、今後の研究に向けてメンバー一同、決意を新たにしました。',
+    descriptionEn: 'In April 2026 we attended the 115th Annual Meeting of the Japanese Society of Pathology in Sapporo.\nProf. Kawanishi presented work on the microenvironment of kidney cancer, and Assoc. Prof. Kang presented mass spectrometry studies of membranous nephropathy. Assistant Prof. Masaki Baba also attended, and the meeting offered a valuable opportunity to engage with the latest research.\nIt was an inspiring meeting, and we all came away with renewed determination for the work ahead.',
+    images: ['2026-04-jsp-1.jpg', '2026-04-jsp-2.jpg'],
+    focus: 'center 22%',
+    alt: 'Lab members at the 115th Annual Meeting of the Japanese Society of Pathology, Sapporo'
+  },
+  {
+    date: '2026.04',
+    titleJa: '新メンバー歓迎',
+    titleEn: 'Welcome, New Members',
+    descriptionJa: '2026年4月、馬場正樹助教と、大学院留学生の関 宇燦（Yucan Guan）さんが研究室に加わりました。関さんは朱 月新（Yuexin Zhu）さんの後輩にあたり、新たなメンバーとして研究をスタートします。\nまた、朱さんは研究の引き継ぎのため留学期間を4月末まで延長し、関さんをサポートしてくれました。最後まで研究室に力を貸していただき、本当にありがとうございました。\n新しいメンバーを迎え、研究室も新たなスタートです。これからどうぞよろしくお願いします！',
+    descriptionEn: 'In April 2026, Assistant Prof. Masaki Baba and international graduate student Yucan Guan joined the lab. Following Yuexin Zhu, Yucan is now beginning research as a new member of the team.\nYuexin Zhu extended the research stay through the end of April to hand over ongoing work and support Yucan. Thank you for giving so much to the lab right up to the end.\nWith new members on board, the lab is off to a fresh start. We look forward to working together!',
+    image: '2026-04-new-members.jpg',
+    focus: 'center 30%',
+    alt: 'New lab members, April 2026'
+  },
+  {
+    date: '2026.03',
+    titleJa: '送別会',
+    titleEn: 'Farewell Party',
+    descriptionJa: '2026年3月、梶尾 優希（Yuki Kajio）さん、朱 月新（Yuexin Zhu）さん、白 雪（Xue Bai）さんのFarewell Partyを行いました。\n短い期間ではありましたが、ともに研究に取り組めたことに感謝しています。皆さんの新たなステージでのさらなるご活躍を心よりお祈りしています。\n研究成果の論文化に向けた取り組みはこれからも続きます。今後ともどうぞよろしくお願いします！',
+    descriptionEn: 'In March 2026 we held a farewell party for Yuki Kajio, Yuexin Zhu, and Xue Bai.\nThough our time together was short, we are grateful to have worked alongside them, and we wish them every success in the next stage of their careers.\nOur work toward publishing the results of their research continues, and we look forward to working with them in the years ahead!',
+    images: ['2026-03-farewell-1.jpg', '2026-03-farewell-2.jpg'],
+    alt: 'Farewell party for Yuki Kajio, Yuexin Zhu, and Xue Bai, March 2026'
+  },
+  {
+    date: '2025.04',
+    titleJa: '川西教授 着任',
+    titleEn: 'Welcome, Prof. Kawanishi',
+    descriptionJa: '川西教授が着任しました。よろしくお願いします。',
+    descriptionEn: 'Prof. Kunio Kawanishi joined the Department of Anatomy in April 2025. We look forward to the years ahead together.',
+    // First image is the card photo; all images can be browsed in the lightbox.
+    images: ['2025-04-welcome-1.jpg', '2025-04-welcome-2.jpg', '2025-04-welcome-3.jpg'],
+    alt: 'Lab members at Showa Medical University, April 2025'
+  }
+];
+
+/* ════════════════════════════════════════
+   PEOPLE RENDERING
+   ════════════════════════════════════════ */
+(function () {
+  function el(tag, cls, text) {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function bi(tag, cls, ja, en) {           // bilingual pair, toggled by body.lang-*
+    const w = el(tag, cls);
+    w.append(el('span', 'ja', ja), el('span', 'en', en));
+    return w;
+  }
+  function initials(nameEn) {
+    return (nameEn || '').split(/\s+/).filter(Boolean).map(s => s[0].toUpperCase()).join('').slice(0, 3);
+  }
+  function link(href, ja, en) {
+    const a = el('a');
+    a.href = href;
+    if (!href.startsWith('mailto:')) { a.target = '_blank'; a.rel = 'noopener' }
+    if (en && ja && ja !== en) a.append(el('span', 'ja', ja), el('span', 'en', en));
+    else a.textContent = en || ja;
+    return a;
+  }
+
+  // Photo component: initials first; the image replaces them only once it loads.
+  function photo(person) {
+    const box = el('div', 'person-photo');
+    box.append(el('span', 'person-photo__initials', initials(person.nameEn)));
+    if (person.photo) {
+      const img = new Image();
+      img.alt = person.nameEn + (person.nameJa ? ' / ' + person.nameJa : '');
+      img.loading = 'lazy';
+      img.onload = () => box.classList.add('has-photo');
+      img.onerror = () => img.remove();
+      img.src = PHOTO_DIR + person.photo;
+      box.append(img);
+    }
+    return box;
+  }
+
+  function chips(list) {
+    const wrap = el('div');
+    wrap.append(el('p', 'label-sm', 'Research Interests'));
+    const c = el('div', 'chips');
+    list.forEach(i => c.append(el('span', 'chip', i)));
+    wrap.append(c);
+    return wrap;
+  }
+
+  function renderPI(p) {
+    const card = document.getElementById('piCard');
+    const left = el('div', 'pi-left');
+    left.append(photo(p));
+    if (p.interests && p.interests.length) left.append(chips(p.interests));
+
+    const right = el('div');
+    right.append(el('p', 'pi-role', 'Principal Investigator'));
+    right.append(el('h2', 'pi-name-ja', p.nameJa));
+    right.append(el('p', 'pi-name-en', p.nameEn + (p.degrees ? ', ' + p.degrees : '')));
+    right.append(el('p', 'pi-position', p.positionJa + ' / ' + p.positionEn));
+    right.append(bi('p', 'pi-affil', p.affiliationJa, p.affiliationEn));
+
+    const bio = el('div', 'pi-bio');
+    bio.append(el('p', 'label-sm', 'Biography'));
+    p.bioJa.forEach(t => bio.append(el('p', 'ja', t)));
+    p.bioEn.forEach(t => bio.append(el('p', 'en', t)));
+    const more = link('#research', '研究内容を見る →', 'Explore our research →');
+    more.removeAttribute('target');
+    more.className = 'pi-more';
+    bio.append(more);
+    right.append(bio);
+
+    if (p.career && p.career.length) {
+      const c = el('div', 'pi-career');
+      c.append(el('p', 'label-sm', 'Selected Appointments'));
+      const dl = el('dl');
+      p.career.forEach(r => {
+        dl.append(el('dt', null, r.years));
+        dl.append(bi('dd', null, r.ja, r.en));
+      });
+      c.append(dl);
+      right.append(c);
+    }
+
+    const links = el('div', 'pi-links');
+    p.links.forEach(l => links.append(link(l.url, l.labelJa || l.label, l.labelEn || l.label)));
+    right.append(links);
+
+    card.append(left, right);
+  }
+
+  function memberCard(m) {
+    const card = el('article', 'member-card');
+    card.append(photo(m));
+    const body = el('div');
+    body.style.cssText = 'display:flex;flex-direction:column;gap:10px;min-width:0;flex:1';
+    const head = el('div');
+    if (m.nameJa) head.append(el('h4', 'member-name-ja', m.nameJa));
+    head.append(el('p', 'member-name-en', m.nameEn));
+    if (m.positionJa || m.positionEn) head.append(bi('p', 'member-position', m.positionJa || m.positionEn, m.positionEn || m.positionJa));
+    body.append(head);
+    if (m.affiliationJa || m.affiliationEn) {
+      const aff = el('div', 'member-affil');
+      aff.append(bi('p', 'member-affil__label', '所属（他講座）', 'Primary affiliation'));
+      const lines = (arr) => { const w = el('span'); (arr || []).forEach((t, i) => { if (i) w.append(el('br')); w.append(t) }); return w };
+      const ja = lines(m.affiliationJa || m.affiliationEn); ja.className = 'ja';
+      const en = lines(m.affiliationEn || m.affiliationJa); en.className = 'en';
+      const p = el('p'); p.append(ja, en);
+      aff.append(p);
+      body.append(aff);
+    }
+    if (m.interests && m.interests.length) body.append(chips(m.interests.slice(0, 4)));
+    const links = el('div', 'member-links');
+    if (m.email) links.append(link('mailto:' + m.email, 'E-mail', 'E-mail'));
+    if (m.researchmap) links.append(link(m.researchmap, 'Researchmap', 'Researchmap'));
+    if (m.orcid) links.append(link(m.orcid, 'ORCID', 'ORCID'));
+    if (links.childNodes.length) body.append(links);
+    card.append(body);
+    return card;
+  }
+
+  function renderMembers(d) {
+    const root = document.getElementById('memberGroups');
+    let shown = 0;
+    d.categories.forEach(cat => {
+      const people = d.members.filter(m => m.category === cat.id);
+      if (!people.length) return;
+      shown++;
+      const g = el('div', 'people-group');
+      const h = el('h3', 'people-group__title');
+      h.append(el('span', 'en', cat.en), el('span', 'ja', cat.ja), el('small', 'ja', cat.en), el('small', 'en', cat.ja));
+      const grid = el('div', 'member-grid');
+      people.forEach(m => grid.append(memberCard(m)));
+      g.append(h, grid);
+      root.append(g);
+    });
+    if (d.alumni && d.alumni.length) {
+      const list = document.getElementById('alumniList');
+      d.alumni.slice().sort((a, b) => String(b.end).localeCompare(String(a.end))).forEach(a => {
+        const li = el('li');
+        li.append(el('span', 'alumni-year', a.period));
+        const name = el('span', 'alumni-name');
+        name.append(el('span', 'ja', a.nameJa || a.nameEn), el('span', 'en', a.nameEn || a.nameJa));
+        if (a.nameJa && a.nameEn) name.append(el('small', 'ja', a.nameEn));
+        li.append(name);
+        li.append(bi('span', null, a.noteJa || '', a.noteEn || ''));
+        if (a.currentJa || a.currentEn) li.append(bi('span', null, '現職：' + (a.currentJa || a.currentEn), 'Now: ' + (a.currentEn || a.currentJa)));
+        list.append(li);
+      });
+      document.getElementById('alumniBlock').hidden = false;
+    }
+
+    if (!shown) root.append(bi('p', 'people-empty', 'メンバー情報は順次掲載します。', 'Member profiles will be added soon.'));
+
+    if (d.collaboratorsOnPeoplePage && d.collaborators.length) {
+      const list = document.getElementById('collabList');
+      d.collaborators.forEach(c => {
+        const li = el('li');
+        const name = el('strong');
+        name.append(el('span', 'ja', c.nameJa || c.nameEn), el('span', 'en', c.nameEn || c.nameJa));
+        li.append(name, el('br'), el('span', 'ja', c.affiliationJa || c.affiliationEn || ''), el('span', 'en', c.affiliationEn || c.affiliationJa || ''));
+        list.append(li);
+      });
+      document.getElementById('collabBlock').hidden = false;
+    }
+  }
+
+  // Home teaser: PI + members as small portraits
+  function renderTeam(d) {
+    const row = document.getElementById('teamRow');
+    [d.pi].concat(d.members).forEach(m => {
+      const item = el('div', 'team-item');
+      item.append(photo(m), bi('p', 'team-item__name', m.nameJa || m.nameEn, m.nameEn));
+      row.append(item);
+    });
+  }
+
+  /* ── Lab Life: photo card component ── */
+  const CAMERA = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+  const lightbox = document.getElementById('lightbox');
+
+  let lbList = [], lbIndex = 0, lbEntry = null;
+  function showLightbox() {
+    const img = document.getElementById('lightboxImg');
+    img.src = EVENT_DIR + lbList[lbIndex];
+    img.alt = lbEntry.alt || lbEntry.titleEn;
+    const cap = document.getElementById('lightboxCap');
+    cap.textContent = '';
+    cap.append(lbEntry.date + '  ', el('span', 'ja', lbEntry.titleJa), el('span', 'en', lbEntry.titleEn));
+    if (lbList.length > 1) cap.append('  (' + (lbIndex + 1) + ' / ' + lbList.length + ')');
+    document.getElementById('lightboxPrev').hidden = lbList.length < 2;
+    document.getElementById('lightboxNext').hidden = lbList.length < 2;
+  }
+  function openLightbox(list, e) {
+    lbList = list; lbIndex = 0; lbEntry = e;
+    showLightbox();
+    lightbox.showModal();
+  }
+  function stepLightbox(d) {
+    if (lbList.length < 2) return;
+    lbIndex = (lbIndex + d + lbList.length) % lbList.length;
+    showLightbox();
+  }
+
+  function lifeCard(e) {
+    const card = el('article', 'life-card');
+    const ph = el('button', 'life-photo');
+    ph.type = 'button';
+    ph.setAttribute('aria-label', e.titleEn);
+    ph.innerHTML = CAMERA;
+    ph.append(el('span', 'life-photo__ph', 'Photo'));
+    const list = (e.images && e.images.length) ? e.images : (e.image ? [e.image] : []);
+    if (list.length) {
+      const img = new Image();
+      img.alt = e.alt || e.titleEn;
+      img.loading = 'lazy';
+      img.onload = () => ph.classList.add('has-photo');
+      img.onerror = () => img.remove();
+      img.src = EVENT_DIR + list[0];
+      if (e.focus) img.style.objectPosition = e.focus;
+      ph.append(img);
+      if (list.length > 1) ph.append(el('span', 'life-count', list.length + ' photos'));
+      ph.addEventListener('click', () => { if (ph.classList.contains('has-photo')) openLightbox(list, e) });
+    }
+    const body = el('div', 'life-body');
+    if (e.sample) body.append(bi('span', 'life-sample', '掲載例', 'Sample'));
+    body.append(el('p', 'life-date', e.date));
+    body.append(bi('h3', 'life-title', e.titleJa, e.titleEn));
+    body.append(bi('p', 'life-desc', e.descriptionJa, e.descriptionEn));
+    card.append(ph, body);
+    return card;
+  }
+
+  function renderLabLife(list) {
+    const sorted = list.slice().sort((a, b) => b.date.localeCompare(a.date));
+    const latest = document.getElementById('lifeLatest');
+    sorted.slice(0, 3).forEach(e => latest.append(lifeCard(e)));
+    if (!sorted.length) document.getElementById('lab-life-home').hidden = true;
+
+    const all = document.getElementById('lifeAll');
+    const years = [...new Set(sorted.map(e => e.date.slice(0, 4)))];
+    years.forEach(y => {
+      all.append(el('h2', 'life-year', y));
+      const grid = el('div', 'life-grid');
+      sorted.filter(e => e.date.startsWith(y)).forEach(e => grid.append(lifeCard(e)));
+      all.append(grid);
+    });
+  }
+
+  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.close());
+  document.getElementById('lightboxPrev').addEventListener('click', () => stepLightbox(-1));
+  document.getElementById('lightboxNext').addEventListener('click', () => stepLightbox(1));
+  lightbox.addEventListener('keydown', ev => {
+    if (ev.key === 'ArrowLeft') stepLightbox(-1);
+    if (ev.key === 'ArrowRight') stepLightbox(1);
+  });
+  lightbox.addEventListener('click', ev => { if (ev.target === lightbox) lightbox.close() });
+
+  renderPI(PEOPLE_DATA.pi);
+  renderMembers(PEOPLE_DATA);
+  renderTeam(PEOPLE_DATA);
+  renderLabLife(LAB_LIFE);
+})();
+
+/* ── Page routing: #people → People, #lab-life → Lab Life, any other hash → Home ── */
+(function () {
+  const body = document.body;
+  const nav = document.getElementById('nav');
+  const toggle = document.getElementById('navToggle');
+
+  function closeMenu() {
+    nav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  document.getElementById('navLinks').addEventListener('click', e => { if (e.target.closest('a')) closeMenu() });
+
+  function route() {
+    const hash = location.hash || '#top';
+    const page = hash === '#people' ? 'people' : hash === '#lab-life' ? 'lablife' : 'home';
+    body.dataset.page = page;
+    document.querySelectorAll('.nav__links a').forEach(a => {
+      const href = a.getAttribute('href');
+      if ((href === '#people' && page === 'people') || (href === '#lab-life' && page === 'lablife')) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    if (page !== 'home') { window.scrollTo(0, 0); return }
+    const target = document.getElementById(hash.slice(1));
+    if (target) requestAnimationFrame(() => target.scrollIntoView());
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();
+
+/* ── Contact links: mail address assembled in JS (not written in the HTML, to reduce spam harvesting) ── */
+// The address is assembled here, so it never appears in the HTML source.
+// On a normal website the links are plain mailto links. Inside an embedding frame (e.g. a preview),
+// where mailto links can be intercepted, clicking copies the address and shows a short notice instead.
+(function () {
+  const addr = ['micro-anatomy', 'med.showa-u.ac.jp'].join(String.fromCharCode(64));
+  let framed = false;
+  try { framed = window.self !== window.top } catch (e) { framed = true }
+  const toast = document.getElementById('mailToast');
+
+  function notify(copied) {
+    toast.textContent = '';
+    if (copied) {
+      toast.append(el2('span', 'ja', 'メールアドレスをコピーしました：'), el2('span', 'en', 'Email address copied: '), addr);
+    } else {
+      toast.append(el2('span', 'ja', 'メールアドレス：'), el2('span', 'en', 'Email: '), addr);
+    }
+    toast.hidden = false;
+    clearTimeout(notify.t);
+    notify.t = setTimeout(() => { toast.hidden = true }, 5000);
+  }
+  function el2(tag, cls, text) { const n = document.createElement(tag); n.className = cls; n.textContent = text; return n }
+  function copy(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).then(() => true, () => legacyCopy(text));
+    }
+    return Promise.resolve(legacyCopy(text));
+  }
+  function legacyCopy(text) {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.append(ta); ta.select();
+      const ok = document.execCommand('copy'); ta.remove(); return ok;
+    } catch (e) { return false }
+  }
+
+  document.querySelectorAll('.js-mail').forEach(a => {
+    a.href = 'mailto:' + addr;
+    if (framed) {
+      a.addEventListener('click', ev => {
+        ev.preventDefault();
+        copy(addr).then(notify);
+      });
+    }
+  });
+})();
+
+/* ── Language toggle ── */
+(function () {
+  const body = document.body;
+  const btn  = document.getElementById('langBtn');
+  let lang = 'ja';
+
+  try { lang = localStorage.getItem('kl-lang') || 'ja' } catch(e){}
+
+  function applyLang(l) {
+    lang = l;
+    body.classList.toggle('lang-ja', l === 'ja');
+    body.classList.toggle('lang-en', l === 'en');
+    document.documentElement.lang = l;
+    btn.textContent = l === 'ja' ? 'EN' : 'JP';
+    try { localStorage.setItem('kl-lang', l) } catch(e){}
+  }
+
+  window.toggleLang = function () {
+    applyLang(lang === 'ja' ? 'en' : 'ja');
+  };
+
+  applyLang(lang);
+})();
+</script>
+
+</body></html>
