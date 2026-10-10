@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>川西研究室 | Kawanishi Lab — 昭和医科大学 医学部 解剖学講座 顕微解剖学部門</title>
-<meta name="description" content="昭和医科大学 医学部 解剖学講座 顕微解剖学部門（川西研究室）。空間組織生物学を軸に、形態学・空間オミクス・分子細胞生物学を組み合わせ、腫瘍・腎疾患・炎症性疾患の組織微小環境を研究しています。">
+<meta name="description" content="昭和医科大学 医学部 解剖学講座 顕微解剖学部門（川西研究室）。空間生物学を軸に、形態学・空間オミクス・分子細胞生物学を組み合わせ、腫瘍・腎疾患・炎症性疾患の組織微小環境を研究しています。">
 <link rel="canonical" href="https://showa-microanatomy.jp/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kawanishi Lab">
 <meta property="og:title" content="川西研究室 | Kawanishi Lab">
-<meta property="og:description" content="昭和医科大学 医学部 解剖学講座 顕微解剖学部門。組織の空間から、病態を読み解く。">
+<meta property="og:description" content="昭和医科大学 医学部 解剖学講座 顕微解剖学部門。組織形態と分子機構から病態を読み解く。">
 <meta property="og:url" content="https://showa-microanatomy.jp/">
 <meta property="og:image" content="https://showa-microanatomy.jp/images/events/2025-04-welcome-1.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -217,7 +217,7 @@ h1, h2, h3, h4 { font-family: 'Libre Baskerville', Georgia, serif; line-height: 
    ════════════════════════════════════════ */
 .hero {
   /* deep navy, very slightly lighter toward the bottom to soften the edge into the white page */
-  background: linear-gradient(180deg, #0B1D33 0%, #0E2139 70%, #12283F 100%);
+  background: linear-gradient(180deg, #1C3A66 0%, #1F3E6B 70%, #22426E 100%);
   color: #fff;
   padding: 72px 24px 80px;
   position: relative;
@@ -239,7 +239,45 @@ h1, h2, h3, h4 { font-family: 'Libre Baskerville', Georgia, serif; line-height: 
   margin: 0 auto;
   text-align: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+.hero::before { z-index: 1 }
+.hero__bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  /* fade the images out toward the centre so the text stays on plain navy */
+  -webkit-mask-image: radial-gradient(ellipse 46% 62% at 50% 50%, transparent 0%, transparent 35%, #000 100%);
+          mask-image: radial-gradient(ellipse 46% 62% at 50% 50%, transparent 0%, transparent 35%, #000 100%);
+}
+.hero__slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0;
+  animation: heroFade 40s ease-in-out infinite;
+}
+.hero__slide:nth-child(2) { animation-delay: 10s }
+.hero__slide:nth-child(3) { animation-delay: 20s }
+.hero__slide:nth-child(4) { animation-delay: 30s }
+/* 3D culture: shown near native scale on both sides (sharper than stretching it across the hero) */
+.hero__slide--pair { background-size: auto 70%, auto 70%; background-position: left 3% center, right 3% center; background-repeat: no-repeat; animation-name: heroFadePair }
+/* glomerulus: TEM (left) larger and nearer the centre; LVSEM (right) at the standard size/position */
+.hero__slide--pair:nth-child(1) { background-size: auto 84%, auto 70%; background-position: left 16% center, right 3% center }
+@keyframes heroFadePair {
+  0%    { opacity: 0 }
+  7.5%  { opacity: .55 }
+  22.5% { opacity: .55 }
+  30%   { opacity: 0 }
+  100%  { opacity: 0 }
+}
+@keyframes heroFade {
+  0%   { opacity: 0 }
+  7.5%  { opacity: .38 }
+  22.5% { opacity: .38 }
+  30%   { opacity: 0 }
+  100% { opacity: 0 }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide { animation: none }
+  .hero__slide:first-child { opacity: .12 }
 }
 .hero__kicker {
   display: inline-block;
@@ -313,7 +351,7 @@ h1, h2, h3, h4 { font-family: 'Libre Baskerville', Georgia, serif; line-height: 
 }
 .btn--outline:hover { background: rgba(255,255,255,.08) }
 .hero .btn--primary, .page-hero .btn--primary { background: #2878C8 }
-.hero .btn--outline { color: #D7E3F1; border-color: #6F879F }
+.hero .btn--outline { color: #D7E3F1; border-color: #8299B1 }
 
 /* ════════════════════════════════════════
    SECTION shared
@@ -528,6 +566,9 @@ body.lang-ja { word-break: auto-phrase }
   margin-top: 8px;
 }
 .pub-link svg { flex-shrink: 0 }
+.pub-project { font-size: 12px; color: var(--fg-dim); margin-top: 8px; line-height: 1.6 }
+.pub-project__fund { opacity: .8; font-size: 11.5px }
+.pub-project .ja { font-family: 'Noto Sans JP', sans-serif }
 .pub-note {
   margin-top: 24px;
   font-size: 13px;
@@ -908,7 +949,7 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
    PEOPLE
    ════════════════════════════════════════ */
 .page-hero {
-  background: linear-gradient(180deg, #0B1D33 0%, #0E2139 70%, #12283F 100%);
+  background: linear-gradient(180deg, #1C3A66 0%, #1F3E6B 70%, #22426E 100%);
   color: #fff;
   padding: 56px 0 52px;
   position: relative;
@@ -991,6 +1032,8 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
   padding: 32px;
 }
 .pi-card .person-photo__initials { font-size: 48px }
+.pi-card .person-photo { aspect-ratio: 1 / 1 }
+.pi-card .person-photo img { object-position: center }
 .pi-role {
   font-size: 11px; font-weight: 600; letter-spacing: .14em;
   text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
@@ -1272,19 +1315,26 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
      HERO
      ══════════════════════════════════════════ -->
 <section class="hero" id="top">
+  <!-- Background research images: slow crossfade, kept faint and masked away from the centre text -->
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__slide hero__slide--pair" style="background-image:url('/images/hero/hero-1tem.webp?v=5'),url('/images/hero/hero-1l.webp?v=5')"></div>
+    <div class="hero__slide" style="background-image:url('/images/hero/hero-2.webp?v=5')"></div>
+    <div class="hero__slide" style="background-image:url('/images/hero/hero-3.webp?v=5')"></div>
+    <div class="hero__slide hero__slide--pair" style="background-image:url('/images/hero/hero-4.webp?v=5'),url('/images/hero/hero-4r.webp?v=5')"></div>
+  </div>
   <div class="hero__inner">
-    <span class="hero__kicker ja">昭和医科大学 医学部 解剖学講座 顕微解剖学部門</span>
-    <span class="hero__kicker en">Showa Medical University School of Medicine · Department of Anatomy</span>
+    <span class="hero__kicker ja">昭和医科大学 医学部</span>
+    <span class="hero__kicker en">Showa Medical University · School of Medicine</span>
 
     <h1 class="hero__title">Kawanishi Lab</h1>
     <p class="hero__subtitle-ja ja">川西研究室</p>
 
-    <p class="hero__dept ja">昭和医科大学 医学部 解剖学講座 顕微解剖学部門<br>〒142-8555 東京都品川区旗の台1-5-8</p>
-    <p class="hero__dept en">Department of Anatomy<br>Showa Medical University School of Medicine, Tokyo, Japan</p>
+    <p class="hero__dept ja">解剖学講座 顕微解剖学部門<br>〒142-8555 東京都品川区旗の台1-5-8</p>
+    <p class="hero__dept en">Department of Anatomy<br>1-5-8 Hatanodai, Shinagawa-ku, Tokyo, Japan</p>
 
     <p class="hero__tagline">
-      <span class="ja" style="font-family:'Noto Sans JP',sans-serif;font-weight:300">「組織の空間から、病態を読み解く。」</span>
-      <span class="en">"Decoding disease through tissue spatial biology."</span>
+      <span class="ja" style="font-family:'Noto Sans JP',sans-serif;font-weight:300">組織形態と分子機構から病態を読み解く</span>
+      <span class="en">Decoding disease through tissue morphology and molecular mechanisms</span>
     </p>
 
     <div class="hero__cta">
@@ -1304,12 +1354,12 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
     <div class="section__header">
       <p class="section__eyebrow ja">研究室について</p>
       <p class="section__eyebrow en">About the Lab</p>
-      <h2 class="section__title-ja ja">空間組織生物学で、病態に迫る</h2>
-      <h2 class="section__title en">Spatial Tissue Biology of Disease</h2>
+      <h2 class="section__title-ja ja">空間生物学で、病態に迫る</h2>
+      <h2 class="section__title en">Spatial Biology of Disease</h2>
     </div>
     <div class="concept">
-      <p class="ja">私たちの体の臓器や組織は、さまざまな種類の細胞が集まり、互いに<span class="nw">関わり合う</span>ことで<span class="nw">成り立っています</span>。病気になると、こうした細胞の状態や<span class="nw">位置関係</span>、細胞同士の<span class="nw">関わり方</span>が<span class="nw">変化します</span>。私たちは、「どの細胞が、どこにいて、何をしているのか」を明らかにする<strong><span class="nw">空間組織生物学</span><span class="nw">（Spatial Tissue Biology）</span></strong>を軸に<span class="nw">研究を進めています</span>。<span class="nw">顕微鏡による</span><span class="nw">形態観察</span>、<span class="nw">空間オミクス</span>、<span class="nw">分子・細胞生物学</span>を<span class="nw">組み合わせ</span>、<span class="nw">組織の構造</span>と<span class="nw">細胞の働き</span>を<span class="nw">一体として</span><span class="nw">捉えることを</span><span class="nw">目指します</span>。<span class="nw">腫瘍</span>、<span class="nw">腎疾患</span>、<span class="nw">炎症性疾患</span>を<span class="nw">主な対象</span>に、細胞同士の関わりを<span class="nw">組織の中で</span><span class="nw">読み解く</span>ことで、病気がどのように<span class="nw">生じ、</span><span class="nw">進行するのか</span>を<span class="nw">理解し</span>、<span class="nw">新たな治療</span>に<span class="nw">つながる</span><span class="nw">手がかり</span>を見つけたいと<span class="nw">考えています</span>。</p>
-      <p class="en">The organs and tissues of our bodies are built from many different kinds of cells that interact closely with one another. In disease, the states of these cells, their positions, and the way they communicate all change. Our research centers on <strong>spatial tissue biology</strong>: understanding which cells are present, where they are, and what they are doing. By combining microscopic morphology, spatial omics, and molecular and cell biology, we aim to see tissue structure and cellular function as a single, integrated picture. Focusing on tumors, kidney disease, and inflammatory disease, we study how cells interact within tissue in order to understand how disease arises and progresses, and to find clues that may lead to new therapies.</p>
+      <p class="ja">私たちの体の臓器や組織は、さまざまな種類の細胞が集まり、互いに<span class="nw">関わり合う</span>ことで<span class="nw">成り立っています</span>。病気になると、こうした細胞の状態や<span class="nw">位置関係</span>、細胞同士の<span class="nw">関わり方</span>が<span class="nw">変化します</span>。私たちは、「どの細胞が、どこにいて、何をしているのか」を明らかにする<strong><span class="nw">空間生物学</span><span class="nw">（Spatial Biology）</span></strong>を軸に<span class="nw">研究を進めています</span>。<span class="nw">顕微鏡による</span><span class="nw">形態観察</span>、<span class="nw">空間オミクス</span>、<span class="nw">分子・細胞生物学</span>を<span class="nw">組み合わせ</span>、<span class="nw">組織の構造</span>と<span class="nw">細胞の働き</span>を<span class="nw">一体として</span><span class="nw">捉えることを</span><span class="nw">目指します</span>。<span class="nw">腫瘍</span>、<span class="nw">腎疾患</span>、<span class="nw">炎症性疾患</span>を<span class="nw">主な対象</span>に、細胞同士の関わりを<span class="nw">組織の中で</span><span class="nw">読み解く</span>ことで、病気がどのように<span class="nw">生じ、</span><span class="nw">進行するのか</span>を<span class="nw">理解し</span>、<span class="nw">新たな治療</span>に<span class="nw">つながる</span><span class="nw">手がかり</span>を見つけたいと<span class="nw">考えています</span>。</p>
+      <p class="en">The organs and tissues of our bodies are built from many different kinds of cells that interact closely with one another. In disease, the states of these cells, their positions, and the way they communicate all change. Our research centers on <strong>spatial biology</strong>: understanding which cells are present, where they are, and what they are doing. By combining microscopic morphology, spatial omics, and molecular and cell biology, we aim to see tissue structure and cellular function as a single, integrated picture. Focusing on tumors, kidney disease, and inflammatory disease, we study how cells interact within tissue in order to understand how disease arises and progresses, and to find clues that may lead to new therapies.</p>
     </div>
 
     <!-- Three pillars -->
@@ -1383,8 +1433,8 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
         <h3 class="area-title en">Tissue Microenvironment &amp; Spatial Biology</h3>
         <h3 class="area-title-ja ja">組織微小環境と空間生物学</h3>
         <p class="area-body">
-          <span class="en">Using spatial transcriptomics (Xenium In Situ) and multiplex immunostaining (PhenoCycler), we map cell states and spatial interactions within tissue. We are investigating how immune cells and stromal components organize the tumor microenvironment across multiple cancer types, and extending our approach to inflammatory conditions to understand shared and distinct cellular architectures.</span>
-          <span class="ja">空間トランスクリプトミクス（Xenium In Situ）・多重免疫染色（PhenoCycler）を用いて、組織内の細胞状態と空間的相互作用を解析します。複数のがん種にわたる腫瘍微小環境の細胞構築を調べるとともに、炎症性疾患にもアプローチを拡張し、共通・固有の細胞空間構造の解明に取り組んでいます。</span>
+          <span class="en">We map cell states and spatial interactions within tissue by combining spatial transcriptomics, multiplex immunostaining, and other spatial approaches, choosing the platform that best fits each question (for example, Xenium In Situ and PhenoCycler). We are investigating how immune cells and stromal components organize the tumor microenvironment across multiple cancer types, and extending our approach to inflammatory conditions to understand shared and distinct cellular architectures.</span>
+          <span class="ja">空間トランスクリプトミクスや多重免疫染色をはじめとする空間解析技術を、研究の目的に応じて組み合わせ（Xenium In Situ、PhenoCycler など）、組織内の細胞状態と空間的相互作用を解析しています。複数のがん種にわたる腫瘍微小環境の細胞構築を調べるとともに、炎症性疾患にもアプローチを広げ、疾患に共通する、あるいは固有の細胞空間構造の解明に取り組んでいます。</span>
         </p>
         <div class="area-tags">
           <span class="tag tag--blue">Xenium In Situ</span>
@@ -1445,8 +1495,8 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
       <h2 class="section__title ja">発表論文（抜粋）</h2>
       <h2 class="section__title en">Recent Publications</h2>
       <p class="section__lead">
-        <span class="en">Selected recent papers. <span style="color:var(--glow);font-weight:600">Featured</span> labels highlight our key contributions to spatial tissue biology.</span>
-        <span class="ja"><span style="color:var(--glow);font-weight:600">注目論文</span> は空間組織生物学における主要成果です。</span>
+        <span class="en">Selected recent papers. <span style="color:var(--glow);font-weight:600">Featured</span> labels highlight our key contributions to spatial biology.</span>
+        <span class="ja"><span style="color:var(--glow);font-weight:600">注目論文</span> は空間生物学における主要成果です。</span>
       </p>
     </div>
 
@@ -1469,10 +1519,20 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
             Dang Cao TL, <strong>Kawanishi K*</strong>, Hayashi M, Nakashima M, Komohara Y, Yamashita Y.
             <em>Proc Natl Acad Sci USA</em>. 2025. (*Corresponding author)
           </p>
-          <a href="https://doi.org/10.1073/pnas.2425024122" class="pub-link" target="_blank" rel="noopener">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            DOI: 10.1073/pnas.2425024122
-          </a>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+            <a href="https://doi.org/10.1073/pnas.2425024122" class="pub-link" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              DOI: 10.1073/pnas.2425024122
+            </a>
+            <a href="https://www.tsukuba.ac.jp/journal/medicine-health/20250902040000.html" class="pub-link" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="ja">筑波大学 プレスリリース「乳がん転移を導く『がん細胞-免疫細胞間シグナル』を解明」</span><span class="en">University of Tsukuba Press Release</span>
+            </a>
+          </div>
+          <p class="pub-project">
+            <span class="ja">関連研究課題：癌細胞の代謝リプログラミング依存的な糖鎖修飾と癌微小環境応答の解明<span class="pub-project__fund">（日本学術振興会 科研費 基盤研究(B)、2024.04–2028.03）</span></span>
+            <span class="en">Related research project: Metabolic reprogramming–dependent glycosylation in cancer cells and the response of the tumor microenvironment<span class="pub-project__fund"> (JSPS KAKENHI Grant-in-Aid for Scientific Research (B), 2024.04–2028.03)</span></span>
+          </p>
         </div>
       </div>
 
@@ -1539,7 +1599,7 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
             <span class="pub-journal-name">American Journal of Pathology</span>
           </div>
           <p class="pub-title">
-            <a href="https://researchmap.jp/kukawanishi_2018/published_papers/48271571" target="_blank" rel="noopener">
+            <a href="https://doi.org/10.1016/j.ajpath.2024.10.004" target="_blank" rel="noopener">
               A novel deep learning approach for analyzing glomerular basement membrane lesions in a mouse model of X-linked Alport syndrome
             </a>
           </p>
@@ -1547,10 +1607,16 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
             <strong>Kawanishi K*</strong>, Baba M, Kobayashi R, Hori R, Hashikami K, Danbayashi K, Iwachido T, Kato M.
             <em>Am J Pathol</em>. 2024 Oct 18. (*First and corresponding author)
           </p>
-          <a href="https://researchmap.jp/kukawanishi_2018/published_papers/48271571" class="pub-link" target="_blank" rel="noopener">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            researchmap
-          </a>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+            <a href="https://doi.org/10.1016/j.ajpath.2024.10.004" class="pub-link" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              DOI: 10.1016/j.ajpath.2024.10.004
+            </a>
+            <a href="https://www.tsukuba.ac.jp/journal/medicine-health/20241024140000.html" class="pub-link" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="ja">筑波大学 プレスリリース</span><span class="en">University of Tsukuba Press Release</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1783,8 +1849,8 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
         <div>
           <span class="news-badge news-badge--award">Award</span>
           <div class="news-text">
-            <span class="ja">川西邦夫が <a href="https://researchmap.jp/kukawanishi_2018/awards/51614818" target="_blank" rel="noopener">山中賞</a>（メディカルLVSEM研究会）を受賞しました。</span>
-            <span class="en">Kunio Kawanishi received the <a href="https://researchmap.jp/kukawanishi_2018/awards/51614818" target="_blank" rel="noopener">Yamanaka Award</a> from the Medical LVSEM Research Society.</span>
+            <span class="ja">川西邦夫が <a href="https://lv-sem.org/940/" target="_blank" rel="noopener">山中賞</a>（メディカルLVSEM研究会）を受賞しました。</span>
+            <span class="en">Kunio Kawanishi received the <a href="https://lv-sem.org/940/" target="_blank" rel="noopener">Yamanaka Award</a> from the Medical LVSEM Research Society.</span>
           </div>
         </div>
       </div>
@@ -2027,7 +2093,7 @@ const PEOPLE_DATA = {
     positionEn: 'Professor',
     affiliationJa: '昭和医科大学 医学部 解剖学講座 顕微解剖学部門',
     affiliationEn: 'Department of Anatomy, Showa Medical University School of Medicine',
-    photo: 'kunio-kawanishi.jpg',
+    photo: 'kunio-kawanishi.jpg?v=2',
     interests: [
       'Tissue Microenvironment',
       'Spatial Biology',
@@ -2063,6 +2129,9 @@ const PEOPLE_DATA = {
       { labelJa: '昭和医科大学 研究者情報', labelEn: 'Showa Medical University Profile', url: 'https://rira.showa-u.ac.jp/profile/ja.a255c80ecb43b09a5471fd186680f595.html' },
       { label: 'ORCID', url: 'https://orcid.org/0000-0003-3502-3467' },
       { label: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/?term=Kawanishi+Kunio%5BFull+Author+Name%5D&sort=date' },
+      { labelJa: '日本腎臓学会（評議員）', labelEn: 'Japanese Society of Nephrology (Councilor)', url: 'https://jsn.or.jp' },
+      { labelJa: '日本病理学会（学術評議員）', labelEn: 'Japanese Society of Pathology (Academic Councilor)', url: 'https://pathology.or.jp' },
+      { labelJa: '日本解剖学会（代議員）', labelEn: 'Japanese Association of Anatomists (Delegate)', url: 'https://www.anatomy.or.jp' },
       { labelJa: 'メディカルLVSEM研究会（世話人）', labelEn: 'Medical LVSEM Research Society (Steering Committee)', url: 'https://lv-sem.org' }
     ]
   },
@@ -2124,7 +2193,7 @@ const PEOPLE_DATA = {
       nameEn: 'Kanako Sugo',
       positionJa: '大学院生',
       positionEn: 'Graduate Student',
-      photo: 'kanako-sugo.jpg',
+      photo: 'kanako-sugo.jpg?v=2',
       interests: []
     },
     {
