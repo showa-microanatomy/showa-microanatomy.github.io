@@ -211,6 +211,29 @@ h1, h2, h3, h4 { font-family: 'Libre Baskerville', Georgia, serif; line-height: 
   white-space: nowrap;
 }
 .lang-btn:hover { background: rgba(255,255,255,.18); color: #fff }
+/* Language switch: both options visible, current one highlighted */
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 20px;
+  padding: 2px;
+  background: rgba(255,255,255,.06);
+}
+.lang-opt {
+  border: 0; background: transparent; cursor: pointer;
+  color: #B9C6D5;
+  font: 500 12.5px/1 'Inter', 'Noto Sans JP', sans-serif;
+  padding: 6px 12px; border-radius: 16px;
+  letter-spacing: .02em; white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+.lang-opt:hover { color: #fff }
+.lang-opt[aria-pressed="true"] { background: #F8FAFC; color: #0B1D33; font-weight: 600 }
+.lang-opt:focus-visible { outline: 2px solid #8EC5FF; outline-offset: 1px }
+@media (max-width: 420px) {
+  .lang-opt { font-size: 12px; padding: 5px 9px }
+  .nav__brand-en { font-size: 14px }
+}
 
 /* ════════════════════════════════════════
    HERO — compact, institutional
@@ -1382,7 +1405,10 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
       <li><a href="#join" class="ja">参加案内</a><a href="#join" class="en">Join Us</a></li>
     </ul>
     <div class="nav__right">
-      <button class="lang-btn" id="langBtn" onclick="toggleLang()" aria-label="Switch language">EN</button>
+      <div class="lang-switch" role="group" aria-label="Language / 言語">
+        <button type="button" class="lang-opt" data-lang="ja" lang="ja">日本語</button>
+        <button type="button" class="lang-opt" data-lang="en" lang="en">English</button>
+      </div>
       <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -2817,28 +2843,36 @@ const LAB_LIFE = [
   });
 })();
 
-/* ── Language toggle ── */
+/* ── Language switch ──
+   First visit: ?lang=en|ja in the URL wins, then the visitor's last choice, then the browser language. */
 (function () {
   const body = document.body;
-  const btn  = document.getElementById('langBtn');
-  let lang = 'ja';
+  const opts = document.querySelectorAll('.lang-opt');
+  let lang = null;
 
-  try { lang = localStorage.getItem('kl-lang') || 'ja' } catch(e){}
+  try {
+    const q = new URLSearchParams(location.search).get('lang');
+    if (q === 'en' || q === 'ja') lang = q;
+  } catch (e) {}
+  if (!lang) { try { lang = localStorage.getItem('kl-lang') } catch (e) {} }
+  if (lang !== 'en' && lang !== 'ja') {
+    const prefs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || 'ja'];
+    lang = String(prefs[0] || 'ja').toLowerCase().startsWith('ja') ? 'ja' : 'en';
+  }
 
-  function applyLang(l) {
+  function applyLang(l, remember) {
     lang = l;
     body.classList.toggle('lang-ja', l === 'ja');
     body.classList.toggle('lang-en', l === 'en');
     document.documentElement.lang = l;
-    btn.textContent = l === 'ja' ? 'EN' : 'JP';
-    try { localStorage.setItem('kl-lang', l) } catch(e){}
+    opts.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
+    if (remember) { try { localStorage.setItem('kl-lang', l) } catch (e) {} }
   }
 
-  window.toggleLang = function () {
-    applyLang(lang === 'ja' ? 'en' : 'ja');
-  };
+  opts.forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang, true)));
+  window.toggleLang = function () { applyLang(lang === 'ja' ? 'en' : 'ja', true); };
 
-  applyLang(lang);
+  applyLang(lang, false);
 })();
 </script>
 
