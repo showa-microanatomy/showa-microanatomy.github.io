@@ -1133,6 +1133,12 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
   display: flex; flex-direction: column; gap: 12px;
 }
 .member-card .person-photo { aspect-ratio: 1 / 1 }
+/* Compact cards: small photo beside the name */
+.member-grid--compact { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px }
+.member-grid--compact .member-card { flex-direction: row; align-items: center; padding: 14px; gap: 14px }
+.member-grid--compact .member-card .person-photo { width: 84px; flex-shrink: 0 }
+.member-grid--compact .person-photo__initials { font-size: 20px }
+.member-grid--compact .member-name-ja { font-size: 16px }
 .member-name-ja {
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 17px; font-weight: 700; color: var(--fg); letter-spacing: .06em; line-height: 1.35;
@@ -2278,9 +2284,9 @@ const PEOPLE_DATA = {
   // Display order of lab-member categories. Empty categories are not shown.
   categories: [
     { id: 'faculty',  en: 'Faculty / Staff',                                ja: '教員・スタッフ' },
-    { id: 'graduate',      en: 'Graduate Students (Graduate School of Medicine)', ja: '大学院生（医学研究科）' },
-    { id: 'international', en: 'International Graduate Students',                 ja: '大学院留学生' },
-    { id: 'visiting',      en: 'Visiting Researchers',                            ja: '客員研究者' }
+    { id: 'graduate',      en: 'Graduate Students (Graduate School of Medicine)', ja: '大学院生（医学研究科）', compact: true },
+    { id: 'international', en: 'International Graduate Students',                 ja: '大学院留学生',           compact: true },
+    { id: 'visiting',      en: 'Visiting Researchers',                            ja: '客員研究者',             compact: true }
   ],
 
   // Lab members. Fields: category, nameJa, nameEn, positionJa, positionEn,
@@ -2629,7 +2635,8 @@ const LAB_LIFE = [
       const g = el('div', 'people-group');
       const h = el('h3', 'people-group__title');
       h.append(el('span', 'en', cat.en), el('span', 'ja', cat.ja), el('small', 'ja', cat.en), el('small', 'en', cat.ja));
-      const grid = el('div', 'member-grid');
+      // compact: true → smaller photo beside the name (students, visitors); faculty keep the large card
+      const grid = el('div', cat.compact ? 'member-grid member-grid--compact' : 'member-grid');
       people.forEach(m => grid.append(memberCard(m)));
       g.append(h, grid);
       root.append(g);
