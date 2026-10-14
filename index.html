@@ -2232,8 +2232,8 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
       <h1 class="page-hero__title">Lab Life</h1>
       <p class="page-hero__title-ja">研究室の活動</p>
       <p class="page-hero__lead">
-        <span class="ja">学会・研究会、Lab Meeting、共同研究や研究者の訪問など、研究室の日々の活動を紹介します。各記事を開くと写真をご覧いただけます。</span>
-        <span class="en">Conferences, lab meetings, collaborations, and visitors: a look at everyday life in the lab. Open an entry to see its photos.</span>
+        <span class="ja">学会・研究会、Lab Meeting、共同研究や研究者の訪問など、研究室の日々の活動を紹介します。</span>
+        <span class="en">Conferences, lab meetings, collaborations, and visitors: a look at everyday life in the lab.</span>
       </p>
     </div>
   </header>
@@ -2790,11 +2790,6 @@ const LAB_LIFE = [
     return (e.date.replace('.', '-') + '-' + (e.titleEn || '')).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
   function lifeImages(e) { return (e.images && e.images.length) ? e.images : (e.image ? [e.image] : []) }
-  function photoNote(n) {
-    const s = el('span', 'life-row__photos');
-    s.append(el('span', 'ja', `写真 ${n}枚`), el('span', 'en', n === 1 ? '1 photo' : `${n} photos`));
-    return s;
-  }
 
   // Home page: text-only teaser cards linking to each article (no photos are loaded)
   function lifeTeaser(e) {
@@ -2804,9 +2799,8 @@ const LAB_LIFE = [
     body.append(el('p', 'life-date', e.date));
     body.append(bi('h3', 'life-title', e.titleJa, e.titleEn));
     body.append(bi('p', 'life-desc', e.descriptionJa, e.descriptionEn));
-    const n = lifeImages(e).length;
     const more = el('span', 'life-more');
-    more.append(el('span', 'ja', n ? `記事と写真を見る（${n}枚）→` : '詳しく見る →'), el('span', 'en', n ? `Read more & photos (${n}) →` : 'Read more →'));
+    more.append(el('span', 'ja', '記事を見る →'), el('span', 'en', 'Read more →'));
     body.append(more);
     card.append(body);
     return card;
@@ -2820,8 +2814,6 @@ const LAB_LIFE = [
     const main = el('span', 'life-row__main');
     main.append(bi('span', 'life-row__title', e.titleJa, e.titleEn));
     main.append(bi('span', 'life-row__desc', e.descriptionJa.split('\n')[0], e.descriptionEn.split('\n')[0]));
-    const n = lifeImages(e).length;
-    if (n) main.append(photoNote(n));
     a.append(main, el('span', 'life-row__arrow', '›'));
     return a;
   }
