@@ -1232,6 +1232,9 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
    LAB LIFE — photo cards
    ════════════════════════════════════════ */
 .section--life { padding: 52px 0 }
+/* Home "People" teaser: heading, lead and link only (photos/names are on the People page) */
+.section--compact { padding: 52px 0 }
+.section--compact .section__header { margin-bottom: 18px }
 .section__head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px }
 .section__head-row .section__header { margin-bottom: 0 }
 .life-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px }
@@ -1881,7 +1884,7 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
 <!-- ══════════════════════════════════════════
      PEOPLE (home teaser — rendered from PEOPLE_DATA)
      ══════════════════════════════════════════ -->
-<section class="section section--alt" id="people-home">
+<section class="section section--alt section--compact" id="people-home">
   <div class="container">
     <div class="section__header">
       <p class="section__eyebrow ja">メンバー</p>
@@ -1893,7 +1896,6 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
         <span class="en">Our members bring different areas of expertise and work across morphology, spatial biology, and molecular biology.</span>
       </p>
     </div>
-    <div class="team-row" id="teamRow"></div>
     <a href="#people" class="more-link"><span class="ja">メンバー紹介を見る →</span><span class="en">Meet the team →</span></a>
   </div>
 </section>
@@ -2756,16 +2758,6 @@ const LAB_LIFE = [
     }
   }
 
-  // Home teaser: PI + members as small portraits
-  function renderTeam(d) {
-    const row = document.getElementById('teamRow');
-    [d.pi].concat(d.members).forEach(m => {
-      const item = el('div', 'team-item');
-      item.append(photo(m), bi('p', 'team-item__name', m.nameJa || m.nameEn, m.nameEn));
-      row.append(item);
-    });
-  }
-
   /* ── Lab Life: photo card component ── */
   const CAMERA = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
   const lightbox = document.getElementById('lightbox');
@@ -2890,7 +2882,6 @@ const LAB_LIFE = [
 
   renderPI(PEOPLE_DATA.pi);
   renderMembers(PEOPLE_DATA);
-  renderTeam(PEOPLE_DATA);
   renderLabLife(LAB_LIFE);
 })();
 
