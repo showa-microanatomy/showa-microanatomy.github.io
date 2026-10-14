@@ -1343,11 +1343,16 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
 .life-article__photos.is-single { grid-template-columns: 1fr }
 .life-article__photo { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; padding: 0; background: var(--bg-alt); cursor: zoom-in; display: block }
 .life-article__photo img { width: 100%; height: auto; display: block }
-.life-article__photos:not(.is-single) .life-article__photo img { height: auto; object-fit: cover; object-position: center }
+.life-article__photos.is-rows { display: flex; flex-direction: column; gap: 14px }
+.life-article__row { display: flex; gap: 14px; align-items: flex-start }
+.life-article__row .life-article__photo { flex: 1 1 0; min-width: 0 }
+.life-article__row.is-lone .life-article__photo { flex: 0 1 calc(50% - 7px) }
 @media (max-width: 560px) {
   .life-row { grid-template-columns: 1fr 16px; padding: 14px 4px }
   .life-row__date { grid-column: 1 / -1 }
   .life-article__photos { grid-template-columns: 1fr }
+  .life-article__row { flex-direction: column }
+  .life-article__row .life-article__photo, .life-article__row.is-lone .life-article__photo { flex: none; width: 100% }
 }
 
 /* Image protection (deterrent): no drag, no long-press save menu, no selection */
@@ -2832,23 +2837,19 @@ const LAB_LIFE = [
     art.append(back, el('p', 'life-date', e.date), bi('h2', 'life-article__title', e.titleJa, e.titleEn), bi('p', 'life-article__text', e.descriptionJa, e.descriptionEn));
     const list = lifeImages(e);
     if (list.length) {
-      const g = el('div', 'life-article__photos' + (list.length === 1 ? ' is-single' : ''));
+      const g = el('div', 'life-article__photos' + (list.length === 1 ? ' is-single' : ' is-rows'));
+      let row = g;
       list.forEach((f, i) => {
+        if (list.length > 1 && i % 2 === 0) { row = el('div', 'life-article__row' + (i === list.length - 1 ? ' is-lone' : '')); g.append(row); }
         const b = el('button', 'life-article__photo'); b.type = 'button';
         b.setAttribute('aria-label', (e.alt || e.titleEn) + ' (' + (i + 1) + '/' + list.length + ')');
         const img = new Image(); img.alt = e.alt || e.titleEn; img.src = EVENT_DIR + f;
+        // Scale paired photos to a common height without cropping: width share follows each photo's aspect ratio
+        const paired = row !== g && !row.classList.contains('is-lone');
+        const fit = () => { if (img.naturalWidth && paired) b.style.flexGrow = (img.naturalWidth / img.naturalHeight).toFixed(4); };
+        if (img.complete) fit(); else img.addEventListener('load', fit);
         b.append(img); b.addEventListener('click', () => openLightbox(list, e, i));
-        g.append(b);
-      });
-      // Pair photos side by side at the shorter photo's height (widest ratio) so cards line up
-      const imgs = [...g.querySelectorAll('img')];
-      if (imgs.length > 1) Promise.all(imgs.map(im => im.complete ? 0 : new Promise(r => { im.onload = im.onerror = r; }))).then(() => {
-        for (let r = 0; r < imgs.length; r += 2) {
-          const row = imgs.slice(r, r + 2).filter(im => im.naturalWidth);
-          if (row.length < 2) continue;
-          const ratio = Math.max(...row.map(im => im.naturalWidth / im.naturalHeight));
-          row.forEach(im => { im.style.aspectRatio = ratio.toFixed(4); });
-        }
+        row.append(b);
       });
       art.append(g);
     }
