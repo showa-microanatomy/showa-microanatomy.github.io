@@ -2840,13 +2840,13 @@ const LAB_LIFE = [
         b.append(img); b.addEventListener('click', () => openLightbox(list, e, i));
         g.append(b);
       });
-      // Pair photos side by side at a shared aspect ratio (row average) so cards line up
+      // Pair photos side by side at the shorter photo's height (widest ratio) so cards line up
       const imgs = [...g.querySelectorAll('img')];
       if (imgs.length > 1) Promise.all(imgs.map(im => im.complete ? 0 : new Promise(r => { im.onload = im.onerror = r; }))).then(() => {
         for (let r = 0; r < imgs.length; r += 2) {
           const row = imgs.slice(r, r + 2).filter(im => im.naturalWidth);
           if (row.length < 2) continue;
-          const ratio = row.reduce((a, im) => a + im.naturalWidth / im.naturalHeight, 0) / row.length;
+          const ratio = Math.max(...row.map(im => im.naturalWidth / im.naturalHeight));
           row.forEach(im => { im.style.aspectRatio = ratio.toFixed(4); });
         }
       });
