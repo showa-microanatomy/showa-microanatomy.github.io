@@ -1316,6 +1316,36 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
   color: #fff; font-size: 20px; cursor: pointer;
 }
 
+/* Lab Life list + article view */
+.life-list { border-top: 1px solid var(--border-lt) }
+.life-row {
+  display: grid; grid-template-columns: 96px 1fr 20px; gap: 4px 18px; align-items: start;
+  padding: 16px 8px; border-bottom: 1px solid var(--border-lt); color: inherit; text-decoration: none;
+  transition: background .15s;
+}
+.life-row:hover { background: var(--bg-soft); text-decoration: none }
+.life-row__date { font-size: 13px; font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 1px }
+.life-row__main { display: flex; flex-direction: column; gap: 3px; min-width: 0 }
+.life-row__title { font-size: 15px; font-weight: 600; color: var(--fg) }
+.life-row__desc { font-size: 13.5px; color: var(--fg-mid); line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden }
+.life-row__photos { font-size: 12px; color: var(--fg-dim) }
+.life-row__arrow { font-size: 22px; line-height: 1; color: var(--fg-dim); align-self: center }
+.life-row .ja, .life-article .ja, .life-back .ja { font-family: 'Noto Sans JP', sans-serif }
+.life-article { max-width: 760px }
+.life-back { display: inline-block; font-size: 13.5px; font-weight: 600; margin-bottom: 22px }
+.life-article__title { font-size: clamp(20px, 3vw, 26px); margin: 4px 0 14px; color: var(--fg) }
+.life-article__text { font-size: 15px; line-height: 1.9; color: var(--fg-mid); white-space: pre-line; margin-bottom: 24px }
+.life-article__text .ja { font-weight: 300 }
+.life-article__photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px }
+.life-article__photos.is-single { grid-template-columns: 1fr }
+.life-article__photo { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; padding: 0; background: var(--bg-alt); cursor: zoom-in; display: block }
+.life-article__photo img { width: 100%; height: auto; display: block }
+@media (max-width: 560px) {
+  .life-row { grid-template-columns: 1fr 16px; padding: 14px 4px }
+  .life-row__date { grid-column: 1 / -1 }
+  .life-article__photos { grid-template-columns: 1fr }
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .life-grid { grid-template-columns: repeat(2, 1fr) }
@@ -2200,14 +2230,15 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
       <h1 class="page-hero__title">Lab Life</h1>
       <p class="page-hero__title-ja">研究室の活動</p>
       <p class="page-hero__lead">
-        <span class="ja">学会・研究会、Lab Meeting、共同研究や研究者の訪問など、研究室の日々の活動を写真で紹介します。</span>
-        <span class="en">Conferences, lab meetings, collaborations, and visitors: a look at everyday life in the lab.</span>
+        <span class="ja">学会・研究会、Lab Meeting、共同研究や研究者の訪問など、研究室の日々の活動を紹介します。各記事を開くと写真をご覧いただけます。</span>
+        <span class="en">Conferences, lab meetings, collaborations, and visitors: a look at everyday life in the lab. Open an entry to see its photos.</span>
       </p>
     </div>
   </header>
   <section class="section">
     <div class="container">
       <div id="lifeAll"></div>
+      <article class="life-article" id="lifeDetail" hidden></article>
       <div class="crosslink">
         <span><span class="ja">研究室への参加や共同研究に関心をお持ちの方へ</span><span class="en">Interested in joining us or collaborating?</span></span>
         <span style="display:flex;gap:20px;flex-wrap:wrap">
@@ -2751,8 +2782,8 @@ const LAB_LIFE = [
     document.getElementById('lightboxPrev').hidden = lbList.length < 2;
     document.getElementById('lightboxNext').hidden = lbList.length < 2;
   }
-  function openLightbox(list, e) {
-    lbList = list; lbIndex = 0; lbEntry = e;
+  function openLightbox(list, e, start) {
+    lbList = list; lbIndex = start || 0; lbEntry = e;
     showLightbox();
     lightbox.showModal();
   }
@@ -2762,58 +2793,79 @@ const LAB_LIFE = [
     showLightbox();
   }
 
-  function lifeCard(e) {
-    const card = el('article', 'life-card');
-    const ph = el('button', 'life-photo');
-    ph.type = 'button';
-    ph.setAttribute('aria-label', e.titleEn);
-    ph.innerHTML = CAMERA;
-    ph.append(el('span', 'life-photo__ph', 'Photo'));
-    const list = (e.images && e.images.length) ? e.images : (e.image ? [e.image] : []);
-    if (list.length) {
-      const img = new Image();
-      img.alt = e.alt || e.titleEn;
-      img.loading = 'lazy';
-      img.onload = () => ph.classList.add('has-photo');
-      img.onerror = () => img.remove();
-      img.dataset.src = EVENT_DIR + list[0];   // loaded only when the Lab Life page is opened
-      if (e.focus) img.style.objectPosition = e.focus;
-      ph.append(img);
-      if (list.length > 1) ph.append(el('span', 'life-count', list.length + ' photos'));
-      ph.addEventListener('click', () => { if (ph.classList.contains('has-photo')) openLightbox(list, e) });
-    }
-    const body = el('div', 'life-body');
-    if (e.sample) body.append(bi('span', 'life-sample', '掲載例', 'Sample'));
-    body.append(el('p', 'life-date', e.date));
-    body.append(bi('h3', 'life-title', e.titleJa, e.titleEn));
-    body.append(bi('p', 'life-desc', e.descriptionJa, e.descriptionEn));
-    card.append(ph, body);
-    return card;
+  // Each Lab Life entry gets a stable id from its date and English title (used in #lab-life/<id>)
+  function lifeId(e) {
+    return (e.date.replace('.', '-') + '-' + (e.titleEn || '')).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+  function lifeImages(e) { return (e.images && e.images.length) ? e.images : (e.image ? [e.image] : []) }
+  function photoNote(n) {
+    const s = el('span', 'life-row__photos');
+    s.append(el('span', 'ja', `写真 ${n}枚`), el('span', 'en', n === 1 ? '1 photo' : `${n} photos`));
+    return s;
   }
 
+  // Home page: text-only teaser cards linking to each article (no photos are loaded)
   function lifeTeaser(e) {
     const card = el('a', 'life-card life-card--text');
-    card.href = '#lab-life';
+    card.href = '#lab-life/' + lifeId(e);
     const body = el('div', 'life-body');
     body.append(el('p', 'life-date', e.date));
     body.append(bi('h3', 'life-title', e.titleJa, e.titleEn));
     body.append(bi('p', 'life-desc', e.descriptionJa, e.descriptionEn));
-    const n = (e.images && e.images.length) || (e.image ? 1 : 0);
+    const n = lifeImages(e).length;
     const more = el('span', 'life-more');
-    more.append(el('span', 'ja', n ? `写真を見る（${n}枚）→` : '詳しく見る →'), el('span', 'en', n ? `View photos (${n}) →` : 'Read more →'));
+    more.append(el('span', 'ja', n ? `記事と写真を見る（${n}枚）→` : '詳しく見る →'), el('span', 'en', n ? `Read more & photos (${n}) →` : 'Read more →'));
     body.append(more);
     card.append(body);
     return card;
   }
 
-  window.loadLifeImages = function () {
-    document.querySelectorAll('#lifeAll img[data-src]').forEach(img => { img.src = img.dataset.src; img.removeAttribute('data-src'); });
+  // Lab Life page: list of entries (date, title, short description) — no photos in the list
+  function lifeRow(e) {
+    const a = el('a', 'life-row');
+    a.href = '#lab-life/' + lifeId(e);
+    a.append(el('span', 'life-row__date', e.date));
+    const main = el('span', 'life-row__main');
+    main.append(bi('span', 'life-row__title', e.titleJa, e.titleEn));
+    main.append(bi('span', 'life-row__desc', e.descriptionJa.split('\n')[0], e.descriptionEn.split('\n')[0]));
+    const n = lifeImages(e).length;
+    if (n) main.append(photoNote(n));
+    a.append(main, el('span', 'life-row__arrow', '›'));
+    return a;
+  }
+
+  // Article view: full text + this entry's photos (images are created only when the article is opened)
+  let LIFE_SORTED = [];
+  function renderArticle(e) {
+    const art = document.getElementById('lifeDetail');
+    art.textContent = '';
+    const back = el('a', 'life-back'); back.href = '#lab-life';
+    back.append(el('span', 'ja', '← 研究室の活動一覧へ'), el('span', 'en', '← All Lab Life entries'));
+    art.append(back, el('p', 'life-date', e.date), bi('h2', 'life-article__title', e.titleJa, e.titleEn), bi('p', 'life-article__text', e.descriptionJa, e.descriptionEn));
+    const list = lifeImages(e);
+    if (list.length) {
+      const g = el('div', 'life-article__photos' + (list.length === 1 ? ' is-single' : ''));
+      list.forEach((f, i) => {
+        const b = el('button', 'life-article__photo'); b.type = 'button';
+        b.setAttribute('aria-label', (e.alt || e.titleEn) + ' (' + (i + 1) + '/' + list.length + ')');
+        const img = new Image(); img.alt = e.alt || e.titleEn; img.src = EVENT_DIR + f;
+        b.append(img); b.addEventListener('click', () => openLightbox(list, e, i));
+        g.append(b);
+      });
+      art.append(g);
+    }
+  }
+  window.showLifeArticle = function (id) {
+    const listView = document.getElementById('lifeAll');
+    const art = document.getElementById('lifeDetail');
+    const e = id && LIFE_SORTED.find(x => lifeId(x) === id);
+    if (e) { renderArticle(e); listView.hidden = true; art.hidden = false; }
+    else { art.hidden = true; art.textContent = ''; listView.hidden = false; }
   };
 
   function renderLabLife(list) {
-    const sorted = list.slice().sort((a, b) => b.date.localeCompare(a.date));
+    const sorted = LIFE_SORTED = list.slice().sort((a, b) => b.date.localeCompare(a.date));
     const latest = document.getElementById('lifeLatest');
-    // Home page: text-only teaser cards (no photos are loaded); photos appear only on the Lab Life page
     sorted.slice(0, 3).forEach(e => latest.append(lifeTeaser(e)));
     if (!sorted.length) document.getElementById('lab-life-home').hidden = true;
 
@@ -2821,9 +2873,9 @@ const LAB_LIFE = [
     const years = [...new Set(sorted.map(e => e.date.slice(0, 4)))];
     years.forEach(y => {
       all.append(el('h2', 'life-year', y));
-      const grid = el('div', 'life-grid');
-      sorted.filter(e => e.date.startsWith(y)).forEach(e => grid.append(lifeCard(e)));
-      all.append(grid);
+      const ul = el('div', 'life-list');
+      sorted.filter(e => e.date.startsWith(y)).forEach(e => ul.append(lifeRow(e)));
+      all.append(ul);
     });
   }
 
@@ -2860,14 +2912,15 @@ const LAB_LIFE = [
 
   function route() {
     const hash = location.hash || '#top';
-    const page = hash === '#people' ? 'people' : hash === '#lab-life' ? 'lablife' : 'home';
+    const isLife = hash === '#lab-life' || hash.startsWith('#lab-life/');
+    const page = hash === '#people' ? 'people' : isLife ? 'lablife' : 'home';
     body.dataset.page = page;
     document.querySelectorAll('.nav__links a').forEach(a => {
       const href = a.getAttribute('href');
       if ((href === '#people' && page === 'people') || (href === '#lab-life' && page === 'lablife')) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
-    if (page === 'lablife' && window.loadLifeImages) window.loadLifeImages();
+    if (page === 'lablife' && window.showLifeArticle) window.showLifeArticle(decodeURIComponent(hash.slice('#lab-life/'.length)) || '');
     if (page !== 'home') { window.scrollTo(0, 0); return }
     const target = document.getElementById(hash.slice(1));
     if (target) requestAnimationFrame(() => target.scrollIntoView());
