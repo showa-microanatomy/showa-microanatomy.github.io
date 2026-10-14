@@ -2251,7 +2251,6 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
     <div class="footer__links">
       <a href="https://researchmap.jp/kukawanishi_2018" target="_blank" rel="noopener">Researchmap</a>
       <a href="https://www.showa-u.ac.jp/education/med/major/anat-1.html" target="_blank" rel="noopener"><span class="ja">昭和医科大学 顕微解剖学部門（公式ページ）</span><span class="en">Showa Medical University (official department page)</span></a>
-      <a href="https://lv-sem.org" target="_blank" rel="noopener"><span class="ja">メディカルLVSEM研究会</span><span class="en">Medical LVSEM Research Society</span></a>
       <a href="#lab-life"><span class="ja">研究室の活動</span><span class="en">Lab Life</span></a>
       <a href="#join" class="js-mail">Contact</a>
     </div>
@@ -2314,7 +2313,11 @@ const PEOPLE_DATA = {
       { label: 'Researchmap', url: 'https://researchmap.jp/kukawanishi_2018', urlEn: 'https://researchmap.jp/kukawanishi_2018?lang=en' },
       { labelJa: '昭和医科大学 研究者情報', labelEn: 'Showa Medical University Profile', url: 'https://rira.showa-u.ac.jp/profile/ja.a255c80ecb43b09a5471fd186680f595.html', urlEn: 'https://rira.showa-u.ac.jp/profile/en.a255c80ecb43b09a5471fd186680f595.html' },
       { label: 'ORCID', url: 'https://orcid.org/0000-0003-3502-3467' },
-      { label: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/?term=Kawanishi+Kunio%5BFull+Author+Name%5D&sort=date' }
+      { label: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/?term=Kawanishi+Kunio%5BFull+Author+Name%5D&sort=date' },
+      { linkPaused: true, labelJa: '日本腎臓学会（評議員）', labelEn: 'Japanese Society of Nephrology (Councilor)' },
+      { linkPaused: true, labelJa: '日本病理学会（学術評議員）', labelEn: 'Japanese Society of Pathology (Academic Councilor)' },
+      { linkPaused: true, labelJa: '日本解剖学会（代議員）', labelEn: 'Japanese Association of Anatomists (Delegate)' },
+      { linkPaused: true, labelJa: 'メディカルLVSEM研究会（世話人）', labelEn: 'Medical LVSEM Research Society (Steering Committee)' }
     ]
   },
 
@@ -2627,7 +2630,7 @@ const LAB_LIFE = [
 
     const links = el('div', 'pi-links');
     // urlEn (optional): separate English page — Japanese link shown in Japanese mode, English link in English mode
-    // linkPaused: true → role shown as plain text, link temporarily disabled; remove the flag to re-enable
+    // linkPaused: true → role shown as plain text without a link
     p.links.forEach(l => {
       if (l.linkPaused) {
         const t = el('span', 'pi-link--static');
