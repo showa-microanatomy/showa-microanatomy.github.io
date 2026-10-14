@@ -1343,6 +1343,7 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
 .life-article__photos.is-single { grid-template-columns: 1fr }
 .life-article__photo { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; padding: 0; background: var(--bg-alt); cursor: zoom-in; display: block }
 .life-article__photo img { width: 100%; height: auto; display: block }
+.life-article__photos:not(.is-single) .life-article__photo img { height: auto; object-fit: cover; object-position: center }
 @media (max-width: 560px) {
   .life-row { grid-template-columns: 1fr 16px; padding: 14px 4px }
   .life-row__date { grid-column: 1 / -1 }
@@ -2838,6 +2839,16 @@ const LAB_LIFE = [
         const img = new Image(); img.alt = e.alt || e.titleEn; img.src = EVENT_DIR + f;
         b.append(img); b.addEventListener('click', () => openLightbox(list, e, i));
         g.append(b);
+      });
+      // Pair photos side by side at a shared aspect ratio (row average) so cards line up
+      const imgs = [...g.querySelectorAll('img')];
+      if (imgs.length > 1) Promise.all(imgs.map(im => im.decode().catch(() => {}))).then(() => {
+        for (let r = 0; r < imgs.length; r += 2) {
+          const row = imgs.slice(r, r + 2).filter(im => im.naturalWidth);
+          if (row.length < 2) continue;
+          const ratio = row.reduce((a, im) => a + im.naturalWidth / im.naturalHeight, 0) / row.length;
+          row.forEach(im => { im.style.aspectRatio = ratio.toFixed(4); });
+        }
       });
       art.append(g);
     }
