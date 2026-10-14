@@ -1349,6 +1349,9 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
   .life-article__photos { grid-template-columns: 1fr }
 }
 
+/* Image protection (deterrent): no drag, no long-press save menu, no selection */
+img { -webkit-user-drag: none; user-drag: none; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none }
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .life-grid { grid-template-columns: repeat(2, 1fr) }
@@ -2961,6 +2964,13 @@ const LAB_LIFE = [
   });
   document.getElementById('mailClose').addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', ev => { if (ev.target === dlg) dlg.close() });
+})();
+
+/* ── Image protection (deterrent): block right-click save and dragging of photos ── */
+(function () {
+  const isPhoto = t => t && (t.tagName === 'IMG' || (t.closest && t.closest('.person-photo, .life-article__photo, .lightbox, .hero__bg')));
+  document.addEventListener('contextmenu', ev => { if (isPhoto(ev.target)) ev.preventDefault(); });
+  document.addEventListener('dragstart', ev => { if (isPhoto(ev.target)) ev.preventDefault(); });
 })();
 
 /* ── Language switch ──
