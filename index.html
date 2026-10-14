@@ -1262,6 +1262,11 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
 .life-title .ja { font-family: 'Noto Sans JP', sans-serif }
 .life-desc { font-size: 13.5px; color: var(--fg-mid); line-height: 1.7; white-space: pre-line }
 .life-desc .ja { font-family: 'Noto Sans JP', sans-serif; font-weight: 300 }
+.life-card--text { color: inherit; text-decoration: none; transition: border-color .15s }
+.life-card--text:hover { border-color: var(--accent); text-decoration: none }
+.life-card--text .life-body { padding: 18px 20px 20px; height: 100% }
+.life-more { margin-top: auto; padding-top: 10px; font-size: 13px; font-weight: 600; color: var(--accent) }
+.life-more .ja { font-family: 'Noto Sans JP', sans-serif }
 #lifeLatest .life-desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden }
 .life-sample {
   align-self: flex-start;
@@ -2771,7 +2776,7 @@ const LAB_LIFE = [
       img.loading = 'lazy';
       img.onload = () => ph.classList.add('has-photo');
       img.onerror = () => img.remove();
-      img.src = EVENT_DIR + list[0];
+      img.dataset.src = EVENT_DIR + list[0];   // loaded only when the Lab Life page is opened
       if (e.focus) img.style.objectPosition = e.focus;
       ph.append(img);
       if (list.length > 1) ph.append(el('span', 'life-count', list.length + ' photos'));
@@ -2786,10 +2791,30 @@ const LAB_LIFE = [
     return card;
   }
 
+  function lifeTeaser(e) {
+    const card = el('a', 'life-card life-card--text');
+    card.href = '#lab-life';
+    const body = el('div', 'life-body');
+    body.append(el('p', 'life-date', e.date));
+    body.append(bi('h3', 'life-title', e.titleJa, e.titleEn));
+    body.append(bi('p', 'life-desc', e.descriptionJa, e.descriptionEn));
+    const n = (e.images && e.images.length) || (e.image ? 1 : 0);
+    const more = el('span', 'life-more');
+    more.append(el('span', 'ja', n ? `写真を見る（${n}枚）→` : '詳しく見る →'), el('span', 'en', n ? `View photos (${n}) →` : 'Read more →'));
+    body.append(more);
+    card.append(body);
+    return card;
+  }
+
+  window.loadLifeImages = function () {
+    document.querySelectorAll('#lifeAll img[data-src]').forEach(img => { img.src = img.dataset.src; img.removeAttribute('data-src'); });
+  };
+
   function renderLabLife(list) {
     const sorted = list.slice().sort((a, b) => b.date.localeCompare(a.date));
     const latest = document.getElementById('lifeLatest');
-    sorted.slice(0, 3).forEach(e => latest.append(lifeCard(e)));
+    // Home page: text-only teaser cards (no photos are loaded); photos appear only on the Lab Life page
+    sorted.slice(0, 3).forEach(e => latest.append(lifeTeaser(e)));
     if (!sorted.length) document.getElementById('lab-life-home').hidden = true;
 
     const all = document.getElementById('lifeAll');
@@ -2842,6 +2867,7 @@ const LAB_LIFE = [
       if ((href === '#people' && page === 'people') || (href === '#lab-life' && page === 'lablife')) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
+    if (page === 'lablife' && window.loadLifeImages) window.loadLifeImages();
     if (page !== 'home') { window.scrollTo(0, 0); return }
     const target = document.getElementById(hash.slice(1));
     if (target) requestAnimationFrame(() => target.scrollIntoView());
