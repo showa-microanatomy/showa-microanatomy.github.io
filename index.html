@@ -2842,7 +2842,7 @@ const LAB_LIFE = [
       });
       // Pair photos side by side at a shared aspect ratio (row average) so cards line up
       const imgs = [...g.querySelectorAll('img')];
-      if (imgs.length > 1) Promise.all(imgs.map(im => im.decode().catch(() => {}))).then(() => {
+      if (imgs.length > 1) Promise.all(imgs.map(im => im.complete ? 0 : new Promise(r => { im.onload = im.onerror = r; }))).then(() => {
         for (let r = 0; r < imgs.length; r += 2) {
           const row = imgs.slice(r, r + 2).filter(im => im.naturalWidth);
           if (row.length < 2) continue;
