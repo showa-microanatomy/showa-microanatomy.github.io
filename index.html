@@ -1133,6 +1133,11 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
   background: var(--bg);
 }
 .pi-links a:hover, .member-links a:hover { border-color: var(--accent); text-decoration: none }
+.pi-link--static {
+  display: inline-flex; align-items: center; font-size: 12.5px; font-weight: 500;
+  padding: 6px 12px; border: 1px solid var(--border-lt); border-radius: 4px;
+  color: var(--fg-mid); background: var(--bg-soft); cursor: default;
+}
 
 /* Member groups */
 .people-group { margin-top: 44px }
@@ -2310,9 +2315,9 @@ const PEOPLE_DATA = {
       { labelJa: '昭和医科大学 研究者情報', labelEn: 'Showa Medical University Profile', url: 'https://rira.showa-u.ac.jp/profile/ja.a255c80ecb43b09a5471fd186680f595.html', urlEn: 'https://rira.showa-u.ac.jp/profile/en.a255c80ecb43b09a5471fd186680f595.html' },
       { label: 'ORCID', url: 'https://orcid.org/0000-0003-3502-3467' },
       { label: 'PubMed', url: 'https://pubmed.ncbi.nlm.nih.gov/?term=Kawanishi+Kunio%5BFull+Author+Name%5D&sort=date' },
-      { hidden: true, labelJa: '日本腎臓学会（評議員）', labelEn: 'Japanese Society of Nephrology (Councilor)', url: 'https://jsn.or.jp', urlEn: 'https://jsn.or.jp/en/' },
-      { hidden: true, labelJa: '日本病理学会（学術評議員）', labelEn: 'Japanese Society of Pathology (Academic Councilor)', url: 'https://pathology.or.jp', urlEn: 'https://www.pathology.or.jp/en/' },
-      { hidden: true, labelJa: '日本解剖学会（代議員）', labelEn: 'Japanese Association of Anatomists (Delegate)', url: 'https://www.anatomy.or.jp', urlEn: 'https://www.anatomy.or.jp/e-top.html' },
+      { linkPaused: true, labelJa: '日本腎臓学会（評議員）', labelEn: 'Japanese Society of Nephrology (Councilor)', url: 'https://jsn.or.jp', urlEn: 'https://jsn.or.jp/en/' },
+      { linkPaused: true, labelJa: '日本病理学会（学術評議員）', labelEn: 'Japanese Society of Pathology (Academic Councilor)', url: 'https://pathology.or.jp', urlEn: 'https://www.pathology.or.jp/en/' },
+      { linkPaused: true, labelJa: '日本解剖学会（代議員）', labelEn: 'Japanese Association of Anatomists (Delegate)', url: 'https://www.anatomy.or.jp', urlEn: 'https://www.anatomy.or.jp/e-top.html' },
       { labelJa: 'メディカルLVSEM研究会（世話人）', labelEn: 'Medical LVSEM Research Society (Steering Committee)', url: 'https://lv-sem.org' }
     ]
   },
@@ -2626,8 +2631,13 @@ const LAB_LIFE = [
 
     const links = el('div', 'pi-links');
     // urlEn (optional): separate English page — Japanese link shown in Japanese mode, English link in English mode
-    // hidden: true → temporarily not shown (e.g. society roles under confirmation); remove the flag to show again
-    p.links.filter(l => !l.hidden).forEach(l => {
+    // linkPaused: true → role shown as plain text, link temporarily disabled; remove the flag to re-enable
+    p.links.forEach(l => {
+      if (l.linkPaused) {
+        const t = el('span', 'pi-link--static');
+        t.append(el('span', 'ja', l.labelJa || l.label), el('span', 'en', l.labelEn || l.label));
+        links.append(t); return;
+      }
       if (!l.urlEn) { links.append(link(l.url, l.labelJa || l.label, l.labelEn || l.label)); return; }
       const ja = link(l.url, l.labelJa || l.label, l.labelJa || l.label); ja.classList.add('ja');
       const en = link(l.urlEn, l.labelEn || l.label, l.labelEn || l.label); en.classList.add('en');
