@@ -1356,7 +1356,7 @@ body:not([data-page="lablife"]) .page-lablife { display: none }
 }
 
 /* Image protection (deterrent): no drag, no long-press save menu, no selection */
-img { -webkit-user-drag: none; user-drag: none; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none }
+img { -webkit-user-drag: none; user-drag: none; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; pointer-events: none }
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
@@ -2891,7 +2891,12 @@ const LAB_LIFE = [
     if (ev.key === 'ArrowLeft') stepLightbox(-1);
     if (ev.key === 'ArrowRight') stepLightbox(1);
   });
-  lightbox.addEventListener('click', ev => { if (ev.target === lightbox) lightbox.close() });
+  // Photos ignore pointer events (long-press save protection), so clicks on the photo reach the dialog: close only outside the photo
+  lightbox.addEventListener('click', ev => {
+    if (ev.target !== lightbox) return;
+    const r = document.getElementById('lightboxImg').getBoundingClientRect();
+    if (ev.clientX < r.left || ev.clientX > r.right || ev.clientY < r.top || ev.clientY > r.bottom) lightbox.close();
+  });
 
   renderPI(PEOPLE_DATA.pi);
   renderMembers(PEOPLE_DATA);
